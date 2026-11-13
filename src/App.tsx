@@ -3,6 +3,7 @@ import { ThemeToggleButton } from "@/components/ThemeToggleButton";
 import { NavbarDock } from "@/components/NavbarDock";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { TrustSealBand } from "@/components/sections/TrustSealBand";
+import { AboutSection } from "@/components/sections/AboutSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ReferencesSection } from "@/components/sections/ReferencesSection";
@@ -36,6 +37,7 @@ function MainSiteShell() {
       <main className="pt-16">
         <HeroSection />
         <TrustSealBand />
+        <AboutSection />
         <ServicesSection />
         <FaqSection />
         <ReferencesSection />
