@@ -2,6 +2,7 @@ import { Building2, Clock, Mail, PhoneCall, ShieldCheck } from "lucide-react";
 import { LinkedinCard } from "@/components/ui/LinkedInCard";
 import { InstagramCard } from "@/components/ui/InstagramCard";
 import { FacebookCard } from "@/components/ui/FacebookCard";
+import { WhatsappCounselPreview } from "@/components/WhatsappCounselPreview";
 
 const CONTACT_CHANNELS = [
   {
@@ -150,6 +151,8 @@ export function ContactSection() {
             />
           </div>
         </div>
+
+        <WhatsappCounselPreview />
       </div>
     </section>
   );

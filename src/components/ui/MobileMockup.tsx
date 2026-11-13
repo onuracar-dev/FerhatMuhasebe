@@ -227,11 +227,11 @@ export function MobileMockup({
     }
 
     let isMounted = true;
-    let t1: NodeJS.Timeout,
-      t2: NodeJS.Timeout,
-      t3: NodeJS.Timeout,
-      t4: NodeJS.Timeout,
-      tReset: NodeJS.Timeout;
+    let t1: ReturnType<typeof setTimeout>,
+      t2: ReturnType<typeof setTimeout>,
+      t3: ReturnType<typeof setTimeout>,
+      t4: ReturnType<typeof setTimeout>,
+      tReset: ReturnType<typeof setTimeout>;
 
     const runSequence = () => {
       if (!isMounted) return;
@@ -417,7 +417,7 @@ export function MobileMockup({
             ) : (
               <>
                 <div className="relative z-10 mx-auto mb-1.5 rounded-full bg-white/90 px-2.5 py-0.5 text-[9px] font-medium text-neutral-600 dark:bg-[#182229]/90 dark:text-neutral-400">
-                  Today
+                  Bugün
                 </div>
 
                 <div className="relative z-10 flex flex-1 [scrollbar-width:none] flex-col justify-end space-y-1.5 overflow-y-auto [&::-webkit-scrollbar]:hidden">
@@ -492,7 +492,7 @@ export function MobileMockup({
                       >
                         <div className="flex items-center gap-1.5 rounded-xl rounded-tl-none bg-white px-3 py-2 dark:bg-[#202c33]">
                           <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
-                            typing
+                            yazıyor
                           </span>
                           <div className="flex items-center gap-1">
                             {[0, 1, 2].map((dotIndex) => (
@@ -528,7 +528,7 @@ export function MobileMockup({
               <EmojiIcon />
             </button>
             <div className="flex flex-1 items-center justify-between rounded-full bg-white px-3 py-1.5 text-xs text-neutral-400 dark:bg-[#2a3942] dark:text-neutral-400">
-              <span className="truncate">Message</span>
+              <span className="truncate">Mesaj yazın...</span>
               <div className="flex items-center gap-2 text-neutral-400">
                 <button
                   type="button"

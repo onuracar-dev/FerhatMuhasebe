@@ -227,41 +227,37 @@ interface SidebarChatItem {
 const SIDEBAR_CHATS: SidebarChatItem[] = [
   {
     id: "1",
-    name: "Alex (Design Lead)",
-    initial: "A",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    lastMsg: "Pushed to registry! Super clean 🚀",
-    time: "10:43 AM",
+    name: "Ferhat Yılmaz, YMM",
+    initial: "FY",
+    avatarUrl: "/images/hero-cobalt.jpg",
+    lastMsg: "KDV iade tasdik raporu GİB sistemine yüklendi.",
+    time: "10:43",
     isActive: true,
   },
   {
     id: "2",
-    name: "Product Design Sync",
-    initial: "P",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=150&auto=format&fit=crop&q=80",
-    lastMsg: "Sarah: Let's review the new tokens at 3 PM",
-    time: "10:15 AM",
+    name: "Tam Tasdik Denetim Masası",
+    initial: "TD",
+    avatarUrl: "/images/service-audit.jpg",
+    lastMsg: "Selin Hanım: Q3 mizan mutabakatı tamamlandı.",
+    time: "10:15",
     unreadCount: 3,
   },
   {
     id: "3",
-    name: "Sarah Miller",
-    initial: "S",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
-    lastMsg: "Got the updated Figma file, thanks!",
-    time: "9:40 AM",
+    name: "KDV İade & YMM Uzmanları",
+    initial: "K",
+    avatarUrl: "/images/service-tax.jpg",
+    lastMsg: "İhracat istisnası evrak listesi güncellendi.",
+    time: "09:40",
   },
   {
     id: "4",
-    name: "Frontend Core Team",
-    initial: "F",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
-    lastMsg: "Build completed successfully in 1.2s",
-    time: "Yesterday",
+    name: "Vergi İnceleme Savunma",
+    initial: "V",
+    avatarUrl: "/images/service-strategy.jpg",
+    lastMsg: "Uzlaşma dilekçesi taslağı PDF olarak paylaşıldı.",
+    time: "Dün",
   },
 ];
 
@@ -299,11 +295,11 @@ export function MacbookMockup({
     }
 
     let isMounted = true;
-    let t1: NodeJS.Timeout,
-      t2: NodeJS.Timeout,
-      t3: NodeJS.Timeout,
-      t4: NodeJS.Timeout,
-      tReset: NodeJS.Timeout;
+    let t1: ReturnType<typeof setTimeout>,
+      t2: ReturnType<typeof setTimeout>,
+      t3: ReturnType<typeof setTimeout>,
+      t4: ReturnType<typeof setTimeout>,
+      tReset: ReturnType<typeof setTimeout>;
 
     const runSequence = () => {
       if (!isMounted) return;
@@ -413,7 +409,7 @@ export function MacbookMockup({
             <div className="p-2">
               <div className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1 text-xs text-neutral-400 dark:bg-[#202c33]">
                 <SearchIcon className="h-3.5 w-3.5 shrink-0 text-neutral-500 dark:text-neutral-400" />
-                <span className="truncate text-[10.5px]">Search chat...</span>
+                <span className="truncate text-[10.5px]">Sohbetlerde ara...</span>
                 <FilterIcon className="ml-auto h-3 w-3 shrink-0 text-neutral-400" />
               </div>
             </div>
@@ -518,11 +514,11 @@ export function MacbookMockup({
                 <>
                   <div className="mx-auto my-1 flex max-w-[90%] items-center justify-center gap-1 rounded-md bg-[#ffeebd] px-3 py-1 text-center text-[9.5px] text-amber-900 dark:bg-[#182229] dark:text-amber-200/80">
                     <LockIcon className="h-2.5 w-2.5 shrink-0 text-amber-700 dark:text-amber-400" />
-                    <span>Messages and calls are end-to-end encrypted.</span>
+                    <span>Müşavirlik görüşmeleri uçtan uca şifrelidir.</span>
                   </div>
 
                   <div className="mx-auto my-0.5 rounded-md bg-white/80 px-2.5 py-0.5 text-[9px] font-semibold tracking-wider text-neutral-500 uppercase dark:bg-[#182229]/90 dark:text-neutral-400">
-                    TODAY
+                    BUGÜN
                   </div>
 
                   <div className="flex flex-1 [scrollbar-width:none] flex-col justify-end space-y-2.5 overflow-y-auto [&::-webkit-scrollbar]:hidden">
@@ -622,7 +618,7 @@ export function MacbookMockup({
                         >
                           <div className="flex items-center gap-1.5 rounded-lg rounded-tl-none bg-white px-3 py-2 dark:bg-[#202c33]">
                             <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
-                              typing
+                              yazıyor
                             </span>
                             <div className="flex items-center gap-1">
                               {[0, 1, 2].map((dotIndex) => (
@@ -664,7 +660,7 @@ export function MacbookMockup({
                 <PaperclipIcon />
               </button>
               <div className="flex-1 rounded-lg bg-white px-3 py-1.5 text-xs text-neutral-400 dark:bg-[#2a3942] dark:text-neutral-400">
-                Type a message
+                Mesaj yazın...
               </div>
               <button
                 type="button"
