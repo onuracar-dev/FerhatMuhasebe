@@ -1,132 +1,10 @@
 "use client";
 
 import React, { useState, useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { motion, AnimatePresence } from "motion/react";
 
 // ==========================================
-// 1. HYDRATION-SAFE TOOLTIP COMPONENTS
-// ==========================================
-
-export function TooltipProvider({
-  delayDuration = 0,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
-  return (
-    <TooltipPrimitive.Provider
-      data-slot="tooltip-provider"
-      delayDuration={delayDuration}
-      {...props}
-    />
-  );
-}
-
-export function Tooltip({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return <TooltipPrimitive.Root data-slot="tooltip" {...props} />;
-}
-
-export function TooltipTrigger({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return (
-    <TooltipPrimitive.Trigger
-      data-slot="tooltip-trigger"
-      suppressHydrationWarning
-      {...props}
-    />
-  );
-}
-
-export function TooltipContent({
-  className = "",
-  sideOffset = 4,
-  children,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
-  return (
-    <TooltipPrimitive.Portal>
-      <TooltipPrimitive.Content
-        data-slot="tooltip-content"
-        sideOffset={sideOffset}
-        className={`z-50 overflow-hidden rounded-md bg-neutral-900 px-3 py-1.5 text-xs text-neutral-50 shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 ${className}`}
-        {...props}
-      >
-        {children}
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Portal>
-  );
-}
-
-// ==========================================
-// 2. ACTION BUTTON COMPONENT
-// ==========================================
-
-export interface ActionButtonProps {
-  label: string;
-  active?: boolean;
-  disabled?: boolean;
-  onClick?: () => void;
-  icon?: React.ReactNode;
-  children?: React.ReactNode;
-}
-
-export function ActionButton({
-  label,
-  active = false,
-  disabled = false,
-  onClick,
-  icon,
-  children,
-}: ActionButtonProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <button
-        type="button"
-        disabled={disabled}
-        suppressHydrationWarning
-        className="inline-flex size-9 items-center justify-center rounded-lg border-0 bg-transparent text-neutral-600 dark:text-neutral-300 disabled:opacity-40"
-      >
-        {icon || children}
-      </button>
-    );
-  }
-
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild suppressHydrationWarning>
-        <button
-          type="button"
-          disabled={disabled}
-          onClick={onClick}
-          aria-label={label}
-          aria-pressed={active}
-          suppressHydrationWarning
-          className={`inline-flex size-9 items-center justify-center rounded-lg border-0 transition-colors ${
-            active
-              ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
-              : "bg-transparent text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-          } disabled:pointer-events-none disabled:opacity-40`}
-        >
-          {icon || children}
-        </button>
-      </TooltipTrigger>
-      <TooltipContent side="top">
-        <p>{label}</p>
-      </TooltipContent>
-    </Tooltip>
-  );
-}
-
-// ==========================================
-// 3. ACCORDION OS COMPONENT
+// ACCORDION OS COMPONENT
 // ==========================================
 
 export interface AccordionItem {
@@ -269,42 +147,34 @@ export function AccordionOS({
     return () => clearInterval(interval);
   }, [autoPlay, autoPlayInterval, pauseOnHover, isHovered, handleNext]);
 
-  // Global Keyboard Navigation (ArrowUp, ArrowDown, W/S, 1-5, Escape)
-  useEffect(() => {
-    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+  // Scoped Keyboard Navigation on the component container
+  const handleContainerKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
       const tag = (e.target as HTMLElement)?.tagName?.toLowerCase();
       if (tag === "input" || tag === "textarea" || (e.target as HTMLElement)?.isContentEditable) {
         return;
       }
 
-      if (e.key === "ArrowDown" || e.key === "ArrowRight" || e.key.toLowerCase() === "s") {
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
         e.preventDefault();
         handleNext();
-      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft" || e.key.toLowerCase() === "w") {
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
         e.preventDefault();
         handlePrev();
       } else if (e.key === "Escape") {
         e.preventDefault();
         setActiveIndex(null);
         onItemChange?.(null);
-      } else if (["1", "2", "3", "4", "5"].includes(e.key)) {
-        const num = parseInt(e.key, 10) - 1;
-        if (num < items.length) {
-          e.preventDefault();
-          setActiveIndex(num);
-          onItemChange?.(num);
-        }
       }
-    };
-
-    window.addEventListener("keydown", handleGlobalKeyDown);
-    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
-  }, [handleNext, handlePrev, items.length, onItemChange]);
+    },
+    [handleNext, handlePrev, onItemChange]
+  );
 
   return (
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onKeyDown={handleContainerKeyDown}
       className={`accordion-os-root ${className}`}
       style={{
         width: typeof containerWidth === "number" ? `${containerWidth}px` : containerWidth,
@@ -343,9 +213,9 @@ export function AccordionOS({
                     <motion.div
                       className="accordion-os-icon-btn"
                       animate={{
-                        backgroundColor: isOpen ? "rgba(2, 2, 2, 0.9)" : "rgba(255, 255, 255, 0.8)",
-                        color: isOpen ? "#ffffff" : "rgb(2, 2, 2)",
-                        borderColor: isOpen ? "rgba(0, 0, 0, 0.8)" : "rgba(2, 2, 2, 0.2)",
+                        backgroundColor: isOpen ? "var(--primary)" : "var(--card)",
+                        color: isOpen ? "var(--primary-foreground)" : "var(--foreground)",
+                        borderColor: isOpen ? "var(--primary)" : "var(--border)",
                       }}
                       whileHover={{ scale: 1.15, rotate: isOpen ? -45 : 90 }}
                       whileTap={{ scale: 0.9 }}
@@ -516,7 +386,7 @@ export function AccordionOS({
         .accordion-os-root {
           box-sizing: border-box;
           margin: 0 auto;
-          font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+          font-family: var(--font-sans);
           user-select: none;
           perspective: 1200px;
           container-type: inline-size;
@@ -528,7 +398,8 @@ export function AccordionOS({
           flex-direction: row;
           justify-content: space-between;
           align-items: stretch;
-          background-color: #f6f6f8;
+          background-color: var(--card);
+          border: 1px solid var(--border);
           border-radius: 36px;
           padding: 24px;
           overflow: hidden;
@@ -543,7 +414,7 @@ export function AccordionOS({
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-start;
-          width: 290px;
+          width: 340px;
           height: 100%;
           flex-shrink: 0;
           pointer-events: auto;
@@ -560,32 +431,32 @@ export function AccordionOS({
 
         .accordion-os-pill {
           width: fit-content;
-          max-width: 290px;
+          max-width: 340px;
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          background-color: rgba(245, 245, 247, 0.72);
+          background-color: color-mix(in oklab, var(--card) 82%, transparent);
           border-radius: 22px;
           padding: 13px 18px;
           cursor: pointer;
-          border: 1px solid rgba(255, 255, 255, 0.7);
+          border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
           transition: background-color 0.25s ease, border-color 0.25s ease;
           outline: none;
           box-sizing: border-box;
         }
 
         .accordion-os-pill:hover {
-          border-color: rgba(0, 0, 0, 0.12);
-          background-color: rgba(255, 255, 255, 0.92);
+          border-color: var(--primary);
+          background-color: color-mix(in oklab, var(--card) 94%, transparent);
         }
 
         .accordion-os-pill:focus-visible {
-          box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 0 2px var(--ring);
         }
 
         .accordion-os-pill-open {
-          width: 290px;
-          background-color: rgba(255, 255, 255, 0.9);
-          border-color: rgba(0, 0, 0, 0.1);
+          width: 340px;
+          background-color: color-mix(in oklab, var(--card) 94%, transparent);
+          border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
         }
 
         .accordion-os-title-stack {
@@ -599,13 +470,13 @@ export function AccordionOS({
           width: 22px;
           height: 22px;
           border-radius: 9999px;
-          border: 1.5px solid rgba(2, 2, 2, 0.3);
+          border: 1.5px solid var(--border);
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
-          color: rgb(2, 2, 2);
-          background: rgba(255, 255, 255, 0.7);
+          color: var(--foreground);
+          background: var(--card);
           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
         }
 
@@ -625,7 +496,7 @@ export function AccordionOS({
         .accordion-os-title-text {
           font-size: 15px;
           font-weight: 600;
-          color: #111111;
+          color: var(--foreground);
           letter-spacing: -0.015em;
           white-space: nowrap;
         }
@@ -633,12 +504,12 @@ export function AccordionOS({
         .accordion-os-pill-badge {
           font-size: 10px;
           font-weight: 700;
-          color: rgba(0, 0, 0, 0.35);
+          color: var(--muted-foreground);
           font-variant-numeric: tabular-nums;
         }
 
         .accordion-os-pill-badge-active {
-          color: rgba(0, 0, 0, 0.75);
+          color: var(--primary);
         }
 
         .accordion-os-claim-container {
@@ -649,8 +520,8 @@ export function AccordionOS({
         .accordion-os-claim-text {
           margin: 0;
           font-size: 13px;
-          line-height: 1.5;
-          color: #4b5563;
+          line-height: 1.55;
+          color: var(--muted-foreground);
           word-break: break-word;
         }
 
@@ -668,12 +539,12 @@ export function AccordionOS({
           display: flex;
           align-items: center;
           gap: 8px;
-          background: rgba(255, 255, 255, 0.65);
+          background: color-mix(in oklab, var(--card) 84%, transparent);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           padding: 4px;
           border-radius: 100px;
-          border: 1px solid rgba(0, 0, 0, 0.05);
+          border: 1px solid var(--border);
         }
 
         .accordion-os-nav-btn {
@@ -684,13 +555,13 @@ export function AccordionOS({
           width: 26px;
           height: 26px;
           border-radius: 9999px;
-          background-color: rgba(255, 255, 255, 0.9);
+          background-color: var(--background);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          color: #1f2937;
-          border: 1px solid rgba(0, 0, 0, 0.06);
+          color: var(--foreground);
+          border: 1px solid var(--border);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
         }
 
@@ -709,7 +580,7 @@ export function AccordionOS({
           font-size: 11px;
           font-weight: 600;
           line-height: 1;
-          color: #374151;
+          color: var(--foreground);
           font-variant-numeric: tabular-nums;
         }
 
@@ -801,25 +672,5 @@ export function AccordionOS({
         }
       ` }} />
     </div>
-  );
-}
-
-// ==========================================
-// 4. MAIN PAGE / APP EXPORT
-// ==========================================
-
-export default function Page() {
-  return (
-    <TooltipProvider delayDuration={0}>
-      <div className="flex h-full w-full min-w-0 items-center justify-center overflow-auto p-4">
-        <AccordionOS
-          containerWidth="min(52.5rem, 100%)"
-          containerHeight={520}
-          autoPlay
-          autoPlayInterval={3500}
-          pauseOnHover
-        />
-      </div>
-    </TooltipProvider>
   );
 }
