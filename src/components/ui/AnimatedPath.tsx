@@ -23,6 +23,7 @@ export interface AnimatedPathProps {
   fillDuration?: number;
   pathDelay?: number;
   fillDelay?: number;
+  triggerOnView?: boolean;
 }
 
 function parseSvg(svgString: string) {
@@ -120,13 +121,14 @@ export function AnimatedPath({
   rawSvg,
   paths: providedPaths,
   viewBox: providedViewBox,
-  strokeColor = "#007F7E",
-  strokeWidth = "3",
-  fillColor = "#007F7E",
+  strokeColor = "currentColor",
+  strokeWidth = "2.5",
+  fillColor = "none",
   pathLengthDuration = 1.5,
   fillDuration = 0.8,
   pathDelay = 0.1,
   fillDelay = 1.2,
+  triggerOnView = true,
 }: AnimatedPathProps) {
   const { paths, viewBox } = React.useMemo(() => {
     if (rawSvg) {
@@ -151,22 +153,27 @@ export function AnimatedPath({
     >
       {paths.map((p, i) => {
         const pFill = p.fill === "none" ? "none" : p.fill || fillColor;
+        const targetState = {
+          pathLength: 1,
+          fillOpacity: pFill === "none" ? 0 : 1,
+        };
         return (
           <motion.path
             key={i}
             d={p.d}
             stroke={p.stroke || strokeColor}
             strokeWidth={p.strokeWidth || strokeWidth}
+            strokeLinecap="round"
+            strokeLinejoin="round"
             transform={p.transform}
             initial={{
               pathLength: 0,
               fill: pFill === "none" ? "none" : pFill,
               fillOpacity: 0,
             }}
-            animate={{
-              pathLength: 1,
-              fillOpacity: pFill === "none" ? 0 : 1,
-            }}
+            animate={triggerOnView ? undefined : targetState}
+            whileInView={triggerOnView ? targetState : undefined}
+            viewport={triggerOnView ? { once: true, amount: 0.35 } : undefined}
             transition={{
               pathLength: {
                 duration: pathLengthDuration,

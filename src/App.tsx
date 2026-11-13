@@ -2,6 +2,7 @@ import SwipeThemeProvider from "@/components/ui/SwipeThemeProvider";
 import { ThemeToggleButton } from "@/components/ThemeToggleButton";
 import { NavbarDock } from "@/components/NavbarDock";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { TrustSealBand } from "@/components/sections/TrustSealBand";
 
 function MainSiteShell() {
   return (
@@ -30,6 +31,7 @@ function MainSiteShell() {
 
       <main className="pt-16">
         <HeroSection />
+        <TrustSealBand />
       </main>
     </div>
   );
