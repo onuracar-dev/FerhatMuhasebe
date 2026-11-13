@@ -996,10 +996,10 @@ function MapControls({
     >
       {showZoom && (
         <ControlGroup>
-          <ControlButton onClick={handleZoomIn} label="Zoom in">
+          <ControlButton onClick={handleZoomIn} label="Yakınlaş">
             <Plus className="size-4" />
           </ControlButton>
-          <ControlButton onClick={handleZoomOut} label="Zoom out">
+          <ControlButton onClick={handleZoomOut} label="Uzaklaş">
             <Minus className="size-4" />
           </ControlButton>
         </ControlGroup>
@@ -1013,7 +1013,7 @@ function MapControls({
         <ControlGroup>
           <ControlButton
             onClick={handleLocate}
-            label="Find my location"
+            label="Konumumu bul"
             disabled={waitingForLocation}
           >
             {waitingForLocation ? (
@@ -1026,7 +1026,7 @@ function MapControls({
       )}
       {showFullscreen && (
         <ControlGroup>
-          <ControlButton onClick={handleFullscreen} label="Toggle fullscreen">
+          <ControlButton onClick={handleFullscreen} label="Tam ekran">
             <Maximize className="size-4" />
           </ControlButton>
         </ControlGroup>

@@ -9,6 +9,9 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { ReferencesSection } from "@/components/sections/ReferencesSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { LocationSection } from "@/components/sections/LocationSection";
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 function MainSiteShell() {
   return (
@@ -44,7 +47,24 @@ function MainSiteShell() {
         <ReferencesSection />
         <BlogSection />
         <ContactSection />
+        <LocationSection />
       </main>
+
+      <footer className="border-t border-border/60 bg-background py-10">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
+          <div>
+            <p className="font-serif text-sm font-semibold text-foreground">
+              Ferhat Yılmaz Yeminli Mali Müşavirlik A.Ş.
+            </p>
+            <p className="mt-1">
+              TÜRMOB Sicil: 34102847 · İstanbul YMM Odası Üyesi · Tam Tasdik &amp; Vergi Danışmanlığı
+            </p>
+          </div>
+          <p>
+            © {CURRENT_YEAR} Ferhat Yılmaz YMM. Tüm hakları saklıdır.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
