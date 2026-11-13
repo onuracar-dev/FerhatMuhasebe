@@ -34,6 +34,7 @@ type BlurTextProps = {
   color?: string;
   fromColor?: string;
   focusOnHover?: boolean;
+  as?: 'h1' | 'h2' | 'p' | 'div';
 };
 
 interface EffectConfig {
@@ -233,15 +234,18 @@ const BlurText = ({
   loopDelay = 2,
   color,
   fromColor,
-  focusOnHover = false
+  focusOnHover = false,
+  as: Tag = 'p'
 }: BlurTextProps) => {
-  const ref = useRef<HTMLParagraphElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<Phase>(() => startPhase(trigger));
-  const firstPhase = useRef(phase).current;
+  const [firstPhase] = useState(phase);
   const [focusWord, setFocusWord] = useState(-1);
   const settledRef = useRef(phase === 'rest');
   const completeRef = useRef(onAnimationComplete);
-  completeRef.current = onAnimationComplete;
+  useEffect(() => {
+    completeRef.current = onAnimationComplete;
+  }, [onAnimationComplete]);
 
   const fx = useMemo(() => buildEffect(effect, direction, blur, distance), [effect, direction, blur, distance]);
 
@@ -294,12 +298,12 @@ const BlurText = ({
   useEffect(() => {
     if (phase !== 'from') return undefined;
     if (trigger === 'load') {
-      setPhase('in');
-      return undefined;
+      const raf = window.requestAnimationFrame(() => setPhase('in'));
+      return () => window.cancelAnimationFrame(raf);
     }
     if (trigger === 'hover' || trigger === 'click') {
-      setPhase('rest');
-      return undefined;
+      const raf = window.requestAnimationFrame(() => setPhase('rest'));
+      return () => window.cancelAnimationFrame(raf);
     }
     const element = ref.current;
     if (!element) return undefined;
@@ -411,8 +415,8 @@ const BlurText = ({
 
   return (
     <MotionConfig reducedMotion="user">
-      <p
-        ref={ref}
+      <Tag
+        ref={ref as React.RefObject<HTMLHeadingElement & HTMLParagraphElement & HTMLDivElement>}
         className={`blur-text flex flex-wrap ${trigger === 'click' ? 'cursor-pointer' : ''} ${className}`}
         style={{ color }}
         onPointerEnter={trigger === 'hover' ? handleEnter : undefined}
@@ -430,7 +434,7 @@ const BlurText = ({
             {indices.map(renderPiece)}
           </span>
         ))}
-      </p>
+      </Tag>
     </MotionConfig>
   );
 };
