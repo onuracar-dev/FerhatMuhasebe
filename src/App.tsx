@@ -1,5 +1,6 @@
 import SwipeThemeProvider from "@/components/ui/SwipeThemeProvider";
 import { ThemeToggleButton } from "@/components/ThemeToggleButton";
+import { NavbarDock } from "@/components/NavbarDock";
 import { useSwipeTheme } from "@/hooks/use-swipe-theme";
 
 function MainSiteShell() {
@@ -24,6 +25,8 @@ function MainSiteShell() {
               </p>
             </div>
           </div>
+
+          <NavbarDock />
 
           <ThemeToggleButton />
         </div>

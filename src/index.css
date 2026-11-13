@@ -26,6 +26,27 @@
 
   --font-sans: 'Satoshi', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-serif: 'Zodiak', Georgia, Cambria, 'Times New Roman', serif;
+
+  /* Arc UI tokens mapped to Kobalt-Krem palette */
+  --radius-control: 9999px;
+  --control-on: #0f3d9e;
+  --surface-raised: #faf4ea;
+  --text-secondary: #1e293b;
+  --text-muted: #64748b;
+  --font-body: var(--font-sans);
+  --tracking-body: -0.01em;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+  --leading-body: 1.45;
+  --space-2: 0.375rem;
+  --space-3: 0.5rem;
+  --space-4: 0.75rem;
+  --duration-fast: 180ms;
+  --duration-instant: 90ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-raised: 0 10px 30px -10px rgba(13, 19, 33, 0.16);
+  --shadow-floating: 0 12px 32px -8px rgba(15, 61, 158, 0.14);
 }
 
 .dark {
@@ -48,6 +69,13 @@
   --border: #252834;
   --input: #252834;
   --ring: #d8af5b;
+
+  --control-on: #d8af5b;
+  --surface-raised: #141720;
+  --text-secondary: #e2d9c5;
+  --text-muted: #9a9180;
+  --shadow-raised: 0 12px 32px -10px rgba(0, 0, 0, 0.6);
+  --shadow-floating: 0 14px 36px -10px rgba(0, 0, 0, 0.7);
 }
 
 @theme inline {
