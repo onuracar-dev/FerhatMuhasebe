@@ -8,6 +8,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { ReferencesSection } from "@/components/sections/ReferencesSection";
 import { BlogSection } from "@/components/sections/BlogSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 function MainSiteShell() {
   return (
@@ -42,6 +43,7 @@ function MainSiteShell() {
         <FaqSection />
         <ReferencesSection />
         <BlogSection />
+        <ContactSection />
       </main>
     </div>
   );

@@ -230,7 +230,7 @@ export const LinkedinCard = ({
                 {location}
               </p>
               <p className="mt-2 text-xs font-semibold text-neutral-900 dark:text-neutral-300">
-                {connections} connections
+                {connections} bağlantı
               </p>
             </div>
           </div>

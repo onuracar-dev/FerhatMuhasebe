@@ -225,7 +225,7 @@ export const FacebookCard = ({
               {name}
             </span>
             <span className="text-sm font-semibold text-neutral-500 dark:text-neutral-400">
-              {friends} friends · {mutualFriends} mutual
+              {friends} bağlantı · {mutualFriends} ortak
             </span>
           </div>
 

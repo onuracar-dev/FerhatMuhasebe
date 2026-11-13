@@ -222,13 +222,13 @@ export const InstagramCard = ({
 
           <div className="mb-3 flex items-center gap-4 text-sm text-neutral-900 dark:text-neutral-100">
             <div>
-              <span className="font-semibold">{posts}</span> posts
+              <span className="font-semibold">{posts}</span> gönderi
             </div>
             <div>
-              <span className="font-semibold">{followers}</span> followers
+              <span className="font-semibold">{followers}</span> takipçi
             </div>
             <div>
-              <span className="font-semibold">{following}</span> following
+              <span className="font-semibold">{following}</span> takip
             </div>
           </div>
 
