@@ -462,12 +462,15 @@ export function AppointmentModule({
               className="space-y-4"
             >
               <div className="grid gap-4 sm:grid-cols-3">
-                <label className="block space-y-1.5 text-xs">
+                <label htmlFor="ymm-client-name" className="block space-y-1.5 text-xs">
                   <span className="font-semibold text-foreground">
                     Ad Soyad
                   </span>
                   <input
+                    id="ymm-client-name"
+                    name="clientName"
                     type="text"
+                    autoComplete="name"
                     required
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
@@ -475,12 +478,15 @@ export function AppointmentModule({
                     className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-primary"
                   />
                 </label>
-                <label className="block space-y-1.5 text-xs">
+                <label htmlFor="ymm-company-name" className="block space-y-1.5 text-xs">
                   <span className="font-semibold text-foreground">
                     Şirket / Unvan
                   </span>
                   <input
+                    id="ymm-company-name"
+                    name="companyName"
                     type="text"
+                    autoComplete="organization"
                     required
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
@@ -488,12 +494,15 @@ export function AppointmentModule({
                     className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-primary"
                   />
                 </label>
-                <label className="block space-y-1.5 text-xs">
+                <label htmlFor="ymm-contact-info" className="block space-y-1.5 text-xs">
                   <span className="font-semibold text-foreground">
                     Telefon veya E-posta
                   </span>
                   <input
+                    id="ymm-contact-info"
+                    name="contactInfo"
                     type="text"
+                    autoComplete="email"
                     required
                     value={contactInfo}
                     onChange={(e) => setContactInfo(e.target.value)}

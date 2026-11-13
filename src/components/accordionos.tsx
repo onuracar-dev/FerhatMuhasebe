@@ -345,7 +345,7 @@ export function AccordionOS({
           >
             <img
               src={staticImage}
-              alt="Handmade ceramic vessels on a studio shelf"
+              alt="Ferhat Yılmaz Yeminli Mali Müşavirlik hizmet görseli"
               className="accordion-os-image"
               loading="eager"
               decoding="async"
