@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { TrustSealBand } from "@/components/sections/TrustSealBand";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { ReferencesSection } from "@/components/sections/ReferencesSection";
 
 function MainSiteShell() {
   return (
@@ -36,6 +37,7 @@ function MainSiteShell() {
         <TrustSealBand />
         <ServicesSection />
         <FaqSection />
+        <ReferencesSection />
       </main>
     </div>
   );
