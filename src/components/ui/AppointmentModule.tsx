@@ -377,28 +377,56 @@ export function AppointmentModule({
                 </div>
 
                 {/* Tactile Date/Time Reel bar inspired by Arc UI Date Reel */}
-                <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                  {timeSlots.map((slotTime, index) => {
-                    const distance = Math.abs(index - selectedTimeIndex);
-                    const isSelected = index === selectedTimeIndex;
-                    return (
-                      <button
-                        key={slotTime}
-                        type="button"
-                        onClick={() => setSelectedTimeIndex(index)}
-                        className={cn(
-                          "relative shrink-0 cursor-pointer rounded-2xl border px-4 py-3 font-mono text-sm font-semibold transition-all duration-200",
-                          isSelected
-                            ? "scale-105 border-primary bg-primary text-primary-foreground shadow-sm"
-                            : distance === 1
-                              ? "border-border bg-card text-foreground opacity-90 hover:border-primary/40"
-                              : "border-border/60 bg-card/50 text-muted-foreground opacity-65 hover:opacity-100",
-                        )}
-                      >
-                        {slotTime}
-                      </button>
-                    );
-                  })}
+                <div className="mt-4 flex items-center gap-2">
+                  <button
+                    type="button"
+                    aria-label="Önceki saat dilimi"
+                    onClick={() =>
+                      setSelectedTimeIndex((prev) => Math.max(0, prev - 1))
+                    }
+                    disabled={selectedTimeIndex === 0}
+                    className="inline-flex h-10 w-9 shrink-0 cursor-pointer items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors hover:border-primary/50 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <ArrowLeft className="h-3.5 w-3.5" />
+                  </button>
+
+                  <div className="flex flex-1 items-center gap-2 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    {timeSlots.map((slotTime, index) => {
+                      const distance = Math.abs(index - selectedTimeIndex);
+                      const isSelected = index === selectedTimeIndex;
+                      return (
+                        <button
+                          key={slotTime}
+                          type="button"
+                          onClick={() => setSelectedTimeIndex(index)}
+                          className={cn(
+                            "relative shrink-0 cursor-pointer rounded-2xl border px-4 py-3 font-mono text-sm font-semibold transition-all duration-200",
+                            isSelected
+                              ? "scale-105 border-primary bg-primary text-primary-foreground shadow-sm"
+                              : distance === 1
+                                ? "border-border bg-card text-foreground opacity-90 hover:border-primary/40"
+                                : "border-border/60 bg-card/50 text-muted-foreground opacity-65 hover:opacity-100",
+                          )}
+                        >
+                          {slotTime}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <button
+                    type="button"
+                    aria-label="Sonraki saat dilimi"
+                    onClick={() =>
+                      setSelectedTimeIndex((prev) =>
+                        Math.min(timeSlots.length - 1, prev + 1),
+                      )
+                    }
+                    disabled={selectedTimeIndex === timeSlots.length - 1}
+                    className="inline-flex h-10 w-9 shrink-0 cursor-pointer items-center justify-center rounded-xl border border-border bg-card text-foreground transition-colors hover:border-primary/50 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </button>
                 </div>
               </div>
 

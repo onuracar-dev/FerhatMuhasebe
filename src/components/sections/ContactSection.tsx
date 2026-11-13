@@ -3,6 +3,65 @@ import { LinkedinCard } from "@/components/ui/LinkedInCard";
 import { InstagramCard } from "@/components/ui/InstagramCard";
 import { FacebookCard } from "@/components/ui/FacebookCard";
 import { WhatsappCounselPreview } from "@/components/WhatsappCounselPreview";
+import {
+  AppointmentModule,
+  type AppointmentSlot,
+  type AppointmentTopic,
+} from "@/components/ui/AppointmentModule";
+
+const YMM_TOPICS: AppointmentTopic[] = [
+  {
+    id: "tam-tasdik",
+    label: "Tam Tasdik Görüşmesi",
+    duration: "45 dk",
+    description:
+      "Yıllık kurumlar vergisi tasdik sözleşmesi, risk analizi ve mizan planlaması.",
+  },
+  {
+    id: "vergi-inceleme",
+    label: "Vergi İnceleme Savunması",
+    duration: "60 dk",
+    description:
+      "Vergi Denetim Kurulu tutanak değerlendirmesi, uzlaşma ve dava öncesi strateji.",
+  },
+  {
+    id: "kdv-iade",
+    label: "KDV İade Planlama",
+    duration: "30 dk",
+    description:
+      "İhracat, indirimli oran ve yatırım teşvik belgeli KDV iade süreç optimizasyonu.",
+  },
+  {
+    id: "ma-diligence",
+    label: "M&A Vergi Due Diligence",
+    duration: "60 dk",
+    description:
+      "Şirket birleşme, devir ve kısmi bölünme işlemleri öncesi kapsamlı vergi incelemesi.",
+  },
+];
+
+const YMM_DATES: AppointmentSlot[] = [
+  { id: "y1", label: "Pazartesi", dayName: "Pzt", dateLabel: "16 Kas" },
+  { id: "y2", label: "Salı", dayName: "Sal", dateLabel: "17 Kas" },
+  { id: "y3", label: "Çarşamba", dayName: "Çar", dateLabel: "18 Kas" },
+  { id: "y4", label: "Perşembe", dayName: "Per", dateLabel: "19 Kas" },
+];
+
+const YMM_TIMES = [
+  "09:30",
+  "10:30",
+  "11:30",
+  "13:30",
+  "14:30",
+  "16:00",
+  "17:15",
+];
+
+const YMM_CHANNELS = [
+  "Levent Merkez Ofis",
+  "Ankara İrtibat Şubesi",
+  "Çevrimiçi · Video Toplantı",
+];
 
 const CONTACT_CHANNELS = [
   {
@@ -153,6 +212,19 @@ export function ContactSection() {
         </div>
 
         <WhatsappCounselPreview />
+
+        <div className="mt-10">
+          <AppointmentModule
+            topics={YMM_TOPICS}
+            dates={YMM_DATES}
+            timeSlots={YMM_TIMES}
+            channels={YMM_CHANNELS}
+            badgeText="Randevu Modülü"
+            heading="Yeminli Mali Müşavir Ön Görüşme Planlayın"
+            description="Konu, görüşme kanalı ve uygun saat reelini seçerek 60 saniyede takvim kaydı oluşturun."
+            ctaLabel="Görüşme Planla"
+          />
+        </div>
       </div>
     </section>
   );
