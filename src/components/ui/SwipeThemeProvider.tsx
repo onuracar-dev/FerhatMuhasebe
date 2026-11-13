@@ -1,7 +1,14 @@
 "use client";
 
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { flushSync } from "react-dom";
+import {
+  ThemeContext,
+  type SwipeDirection,
+  type ThemeContextType,
+} from "@/hooks/use-swipe-theme";
+
+const THEME_STORAGE_KEY = "ferhat-ymm-theme";
 
 interface DocumentWithViewTransition {
   startViewTransition?: (callback: () => void) => {
@@ -10,39 +17,8 @@ interface DocumentWithViewTransition {
   };
 }
 
-export type SwipeDirection =
-  | "left"
-  | "right"
-  | "top"
-  | "bottom"
-  | "left-to-right"
-  | "right-to-left"
-  | "top-to-bottom"
-  | "bottom-to-top"
-  | "top-left"
-  | "top-right"
-  | "bottom-left"
-  | "bottom-right";
-
-interface ThemeContextType {
-  theme: "light" | "dark";
-  direction: SwipeDirection;
-  triggerSwipe: (dir?: SwipeDirection) => void;
-  isAnimating: boolean;
-}
-
 interface CustomWindow extends Window {
   __viewTransitionStyleCount?: number;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-export function useSwipeTheme() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useSwipeTheme must be used within a SwipeThemeProvider");
-  }
-  return context;
 }
 
 const normalizeDirection = (dir: SwipeDirection): SwipeDirection => {
@@ -176,23 +152,32 @@ export default function SwipeThemeProvider({
 }: SwipeThemeProviderProps) {
   const [localTheme, setLocalTheme] = useState<"light" | "dark">(() => {
     if (typeof window !== "undefined") {
+      const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
+      if (saved === "dark" || saved === "light") {
+        return saved;
+      }
       return document.documentElement.classList.contains("dark")
         ? "dark"
         : "light";
     }
     return "light";
   });
-  const [mounted, setMounted] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const isControlled = themeProp !== undefined;
   const activeTheme = isControlled ? themeProp : localTheme;
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setMounted(true);
-    }, 0);
+    const root = document.documentElement;
+    root.setAttribute("data-theme", activeTheme);
+    if (activeTheme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, [activeTheme]);
 
+  useEffect(() => {
     const styleId = "great-ui-view-transition-styles";
     let styleEl = document.getElementById(styleId) as HTMLStyleElement;
     if (!styleEl) {
@@ -228,7 +213,6 @@ export default function SwipeThemeProvider({
     }
 
     return () => {
-      clearTimeout(timer);
       if (typeof window !== "undefined") {
         (window as unknown as CustomWindow).__viewTransitionStyleCount =
           Math.max(
@@ -271,6 +255,7 @@ export default function SwipeThemeProvider({
       } else {
         root.classList.remove("dark");
       }
+      window.localStorage.setItem(THEME_STORAGE_KEY, targetTheme);
 
       if (onThemeChange) {
         onThemeChange(targetTheme);
@@ -352,10 +337,6 @@ export default function SwipeThemeProvider({
       if (onSwipe) onSwipe();
     }
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   const contextValue: ThemeContextType = {
     theme: activeTheme,
