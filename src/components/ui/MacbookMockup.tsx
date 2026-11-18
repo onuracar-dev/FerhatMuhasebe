@@ -227,8 +227,8 @@ interface SidebarChatItem {
 const SIDEBAR_CHATS: SidebarChatItem[] = [
   {
     id: "1",
-    name: "Ferhat Yılmaz, YMM",
-    initial: "FY",
+    name: "Ferhat Muhasebe, YMM",
+    initial: "FM",
     avatarUrl: "/images/hero-cobalt.jpg",
     lastMsg: "KDV iade tasdik raporu GİB sistemine yüklendi.",
     time: "10:43",

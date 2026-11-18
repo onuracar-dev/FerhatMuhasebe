@@ -82,7 +82,7 @@ export function InteractiveBook({
               {excerpt}
             </p>
             <span className="text-[9px] font-medium text-primary">
-              YMM Ferhat Yılmaz
+              Ferhat Muhasebe YMM
             </span>
           </div>
         ) : null}
@@ -167,7 +167,7 @@ export function InteractiveBook({
               {title}
             </p>
             <span className="text-[9px] text-muted-foreground">
-              Ferhat Yılmaz YMM
+              Ferhat Muhasebe YMM
             </span>
           </div>
 

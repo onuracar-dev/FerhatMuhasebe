@@ -23,16 +23,16 @@ const MOBILE_MESSAGES: MobileChatMessage[] = [
   },
   {
     id: 3,
-    sender: "Ferhat Yılmaz, YMM",
-    avatarInitial: "FY",
+    sender: "Ferhat Muhasebe, YMM",
+    avatarInitial: "FM",
     text: "Karşıt incelemelerin %95'i tamamlandı. Alt firma risk analizinde temiz onay aldık.",
     isCurrentUser: true,
     timestamp: "09:44",
   },
   {
     id: 4,
-    sender: "Ferhat Yılmaz, YMM",
-    avatarInitial: "FY",
+    sender: "Ferhat Muhasebe, YMM",
+    avatarInitial: "FM",
     isImage: true,
     imageUrl: "/images/service-tax.jpg",
     imageCaption: "İade tasdik raporu elektronik imzaya hazır.",
@@ -52,8 +52,8 @@ const MOBILE_MESSAGES: MobileChatMessage[] = [
 const DESKTOP_MESSAGES: DesktopChatMessage[] = [
   {
     id: 1,
-    sender: "Ferhat Yılmaz, YMM",
-    avatarInitial: "FY",
+    sender: "Ferhat Muhasebe, YMM",
+    avatarInitial: "FM",
     text: "Merhaba Selin Hanım, yıllık Tam Tasdik ön mizan kontrolü tamamlandı. Enflasyon düzeltmesi farklarını işledik.",
     isCurrentUser: false,
     timestamp: "10:41",
@@ -68,8 +68,8 @@ const DESKTOP_MESSAGES: DesktopChatMessage[] = [
   },
   {
     id: 3,
-    sender: "Ferhat Yılmaz, YMM",
-    avatarInitial: "FY",
+    sender: "Ferhat Muhasebe, YMM",
+    avatarInitial: "FM",
     text: "Detaylı mevzuat özetini sesli not olarak ilettim:",
     isCurrentUser: false,
     timestamp: "10:42",
@@ -147,20 +147,20 @@ export function WhatsappCounselPreview() {
       <div className="mt-10 flex min-h-[400px] items-center justify-center overflow-x-auto">
         {device === "desktop" ? (
           <MacbookMockup
-            headerTitle="Ferhat Yılmaz, YMM"
+            headerTitle="Ferhat Muhasebe, YMM"
             headerSubtitle="çevrimiçi"
             avatarUrl="/images/hero-cobalt.jpg"
-            avatarFallback="FY"
+            avatarFallback="FM"
             userAvatarUrl="/images/service-strategy.jpg"
             messages={DESKTOP_MESSAGES}
             autoPlay
           />
         ) : (
           <MobileMockup
-            headerTitle="Ferhat Yılmaz, YMM"
+            headerTitle="Ferhat Muhasebe, YMM"
             headerSubtitle="çevrimiçi"
             avatarUrl="/images/hero-cobalt.jpg"
-            avatarFallback="FY"
+            avatarFallback="FM"
             messages={MOBILE_MESSAGES}
             autoPlay
           />

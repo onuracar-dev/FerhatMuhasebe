@@ -345,7 +345,7 @@ export function AccordionOS({
           >
             <img
               src={staticImage}
-              alt="Ferhat Yılmaz Yeminli Mali Müşavirlik hizmet görseli"
+              alt="Ferhat Muhasebe Yeminli Mali Müşavirlik hizmet görseli"
               className="accordion-os-image"
               loading="eager"
               decoding="async"

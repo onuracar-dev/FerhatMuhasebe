@@ -19,7 +19,7 @@ const CONTACT_CHANNELS = [
   {
     label: "Resmî İletişim",
     value: "danisma@ferhatymm.com.tr",
-    detail: "KEP: ferhatyilmaz.ymm@hs01.kep.tr",
+    detail: "KEP: ferhatmuhasebe.ymm@hs01.kep.tr",
     href: "mailto:danisma@ferhatymm.com.tr",
   },
   {
@@ -73,9 +73,9 @@ export function ContactSection() {
 
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
             <LinkedinCard
-              username="ferhatyilmazymm"
-              name="Ferhat Yılmaz, YMM"
-              headline="Kurucu Ortak · Tam Tasdik, KDV İadesi & Vergi Uyuşmazlıkları"
+              username="ferhatmuhasebe"
+              name="Ferhat Muhasebe, YMM"
+              headline="Kurumsal Tam Tasdik, KDV İadesi & Vergi Uyuşmazlıkları"
               location="Levent, İstanbul · Türkiye"
               connections="4.850+"
               avatarUrl="/images/hero-cobalt.jpg"
@@ -88,8 +88,8 @@ export function ContactSection() {
             />
 
             <InstagramCard
-              username="ferhatyilmaz.ymm"
-              name="Ferhat Yılmaz YMM"
+              username="ferhatmuhasebe.ymm"
+              name="Ferhat Muhasebe"
               bio="Yeminli Mali Müşavirlik · Haftalık mevzuat özetleri ve ofis gündemi."
               posts="342"
               followers="18.4B"
@@ -103,8 +103,8 @@ export function ContactSection() {
             />
 
             <FacebookCard
-              username="FerhatYilmazYMM"
-              name="Ferhat Yılmaz YMM & Denetim"
+              username="FerhatMuhasebeYMM"
+              name="Ferhat Muhasebe YMM & Denetim"
               bio="Kurumsal mevzuat duyuruları ve vergi takvimi hatırlatmaları."
               friends="6.2B"
               mutualFriends="48"

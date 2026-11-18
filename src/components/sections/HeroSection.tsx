@@ -34,7 +34,7 @@ export function HeroSection() {
           />
 
           <p className="text-base font-normal leading-relaxed text-muted-foreground sm:text-lg">
-            Ferhat Yılmaz Yeminli Mali Müşavirlik.
+            Ferhat Muhasebe — Yeminli Mali Müşavirlik.
           </p>
         </div>
       </div>

@@ -151,7 +151,7 @@ export function BlogSection() {
             </h3>
 
             <p className="mt-2 text-xs text-muted-foreground">
-              YMM Ferhat Yılmaz · {selectedPost.date} · {selectedPost.readTime}
+              Ferhat Muhasebe · {selectedPost.date} · {selectedPost.readTime}
             </p>
 
             <div className="mt-6 overflow-hidden rounded-xl border border-border/50">

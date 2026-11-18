@@ -59,7 +59,7 @@ export function AboutSection() {
               edilmeyen bilanço açıklarıdır.
             </h2>
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
-              YMM Ferhat Yılmaz, kamu denetim geleneğinden gelen mevzuat
+              Ferhat Muhasebe, kamu denetim geleneğinden gelen mevzuat
               titizliğini yönetim kurullarının karar hızıyla birleştirir.
             </p>
           </div>
@@ -68,7 +68,7 @@ export function AboutSection() {
             <div className="overflow-hidden rounded-2xl border border-border/50">
               <img
                 src="/images/about-archive.jpg"
-                alt="Ferhat Yılmaz YMM Kurumsal Arşivi"
+                alt="Ferhat Muhasebe Kurumsal Arşivi"
                 className="h-72 w-full object-cover"
               />
             </div>

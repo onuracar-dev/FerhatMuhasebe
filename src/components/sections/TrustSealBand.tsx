@@ -78,7 +78,7 @@ export function TrustSealBand() {
               />
             </div>
             <span className="text-xs text-muted-foreground">
-              YMM Ferhat Yılmaz · Sicil 34-0482
+              Ferhat Muhasebe YMM · Sicil 34-0482
             </span>
           </div>
         </div>

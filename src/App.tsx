@@ -20,7 +20,7 @@ function MainSiteShell() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
           <a href="#hero" className="flex items-center gap-2.5 text-foreground">
             <span className="text-sm font-bold tracking-tight">
-              Ferhat Yılmaz
+              Ferhat Muhasebe
             </span>
             <span className="text-xs font-normal text-muted-foreground">
               YMM
@@ -48,10 +48,10 @@ function MainSiteShell() {
       <footer className="border-t border-border/50 bg-background py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
           <p className="font-medium text-foreground">
-            Ferhat Yılmaz Yeminli Mali Müşavirlik A.Ş. · TÜRMOB Sicil 34102847
+            Ferhat Muhasebe Yeminli Mali Müşavirlik A.Ş. · TÜRMOB Sicil 34102847
           </p>
           <p>
-            © {CURRENT_YEAR} Ferhat Yılmaz YMM
+            © {CURRENT_YEAR} Ferhat Muhasebe
           </p>
         </div>
       </footer>
