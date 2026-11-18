@@ -11,19 +11,20 @@ export function ThemeToggleButton() {
       onClick={() => triggerSwipe(isDark ? "right-to-left" : "left-to-right")}
       disabled={isAnimating}
       aria-label={isDark ? "Kobalt Gündüz Temasına Geç" : "Altın Gece Temasına Geç"}
-      className="inline-flex items-center gap-2 rounded-full border border-border bg-card/90 px-3.5 py-2 text-xs font-medium text-foreground shadow-sm backdrop-blur-md transition-colors hover:border-primary/50 hover:bg-accent disabled:opacity-60 cursor-pointer"
+      className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-border/60 bg-background/80 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-foreground/30 disabled:opacity-60"
     >
       {isDark ? (
         <>
           <Sun className="h-3.5 w-3.5 text-primary" />
-          <span>Kobalt Gündüz</span>
+          <span>Aydınlık Mod</span>
         </>
       ) : (
         <>
           <Moon className="h-3.5 w-3.5 text-primary" />
-          <span>Altın Gece</span>
+          <span>Karanlık Mod</span>
         </>
       )}
     </button>
   );
 }
+

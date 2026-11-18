@@ -160,10 +160,10 @@ export function InteractiveBook({
             className="flex h-[54%] flex-col justify-between p-3 pl-4"
             style={{ backfaceVisibility: "hidden" }}
           >
-            <span className="text-[9px] font-semibold uppercase tracking-wider text-primary">
+            <span className="text-[9px] font-medium uppercase tracking-wider text-primary">
               {category}
             </span>
-            <p className="font-serif text-xs font-semibold leading-snug text-foreground line-clamp-3">
+            <p className="text-xs font-medium leading-snug text-foreground line-clamp-3">
               {title}
             </p>
             <span className="text-[9px] text-muted-foreground">

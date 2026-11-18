@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, BookOpen, Calendar, Clock, X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import { InteractiveBook } from "@/components/3d-book";
 
 interface BlogPost {
@@ -17,12 +17,12 @@ const BLOG_POSTS: BlogPost[] = [
   {
     id: "enflasyon-duzeltmesi",
     category: "Vergi Hukuku",
-    title: "Enflasyon Düzeltmesi ve Özkaynak Koruması Stratejileri",
+    title: "Enflasyon Düzeltmesi ve Özkaynak Koruması",
     date: "12 Kasım 2026",
-    readTime: "6 dk okuma",
+    readTime: "6 dk",
     coverImage: "/images/blog-ledger.jpg",
     excerpt:
-      "Parasal olmayan kıymetlerin düzeltilmesinde grup şirketlerinin karşılaştığı gizli matrah etkileri ve bilanço optimizasyonu.",
+      "Parasal olmayan kıymetlerin düzeltilmesinde grup şirketlerinin karşılaştığı bilanço etkileri.",
     content: [
       "Enflasyon düzeltmesi uygulaması, yalnızca teknik bir muhasebe endeksleme işlemi değil; şirketlerin özsermaye yapısını, dağıtılabilir kâr potansiyelini ve finansman gider kısıtlamasını doğrudan şekillendiren stratejik bir vergi kararıdır.",
       "Özellikle yüksek stok devir hızına sahip sanayi işletmeleri ile yoğun sabit kıymet yatırımı yapan gruplarda düzeltme katsayılarının doğru seçilmesi ve toplulaştırılmış yöntem tercihlerinin simülasyonla test edilmesi hayati önem taşır.",
@@ -32,12 +32,12 @@ const BLOG_POSTS: BlogPost[] = [
   {
     id: "arge-teknopark-istisna",
     category: "Teşvik & İstisna",
-    title: "Teknopark ve Ar-Ge Merkezlerinde YMM Tasdik Kriterleri",
+    title: "Teknopark ve Ar-Ge Merkezlerinde YMM Kriterleri",
     date: "28 Ekim 2026",
-    readTime: "5 dk okuma",
+    readTime: "5 dk",
     coverImage: "/images/about-archive.jpg",
     excerpt:
-      "Yazılım ihracatı, patent tescil şartları ve girişim sermayesi fonu yükümlülüklerinin inceleme riskleri.",
+      "Yazılım ihracatı, patent şartları ve girişim sermayesi fonu yükümlülüklerinin inceleme riskleri.",
     content: [
       "4691 ve 5746 sayılı kanunlar kapsamında sağlanan kurumlar vergisi, gelir vergisi stopajı ve KDV istisnaları teknoloji şirketleri için önemli bir sermaye kalkanı oluşturur.",
       "Ancak proje kodları bazında maliyet ayrıştırmasının yapılmaması, dışarıda geçirilen süre bildirimlerindeki tutarsızlıklar ve istisna kazancın %3'lük fon ayırma zorunluluğunun atlanması vergi incelemelerinde ciddi tarhiyatlara yol açabilmektedir.",
@@ -47,12 +47,12 @@ const BLOG_POSTS: BlogPost[] = [
   {
     id: "transfer-fiyatlandirmasi",
     category: "Uluslararası Vergi",
-    title: "Sınır Ötesi Grup İşlemlerinde Transfer Fiyatlandırması",
+    title: "Sınır Ötesi İşlemlerde Transfer Fiyatlandırması",
     date: "14 Ekim 2026",
-    readTime: "7 dk okuma",
+    readTime: "7 dk",
     coverImage: "/images/service-strategy.jpg",
     excerpt:
-      "Çok uluslu yapılarda emsallere uygunluk analizi, Ülke Bazlı Raporlama (CbCR) ve peşin fiyatlandırma anlaşmaları.",
+      "Çok uluslu yapılarda emsallere uygunluk analizi ve Ülke Bazlı Raporlama esasları.",
     content: [
       "Yurt dışı iştirakler ile yürütülen yönetim hizmet bedeli, gayri maddi hak (royalty) ve grup içi finansman işlemleri, Maliye İdaresi'nin veri analitiği odaklı denetimlerinin merkezinde yer almaktadır.",
       "OECD rehberleri ile uyumlu hazırlanan yerel dosya ve ana dosya (Master File) dokümantasyonu, ilişkili taraf işlemlerinde örtülü kazanç dağıtımı eleştirilerine karşı en güçlü hukuki dayanaktır.",
@@ -65,31 +65,25 @@ export function BlogSection() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
   return (
-    <section id="blog" className="border-b border-border bg-card/40 py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Makaleler ve Vergi Rehberleri
-            </p>
-            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Mevzuata Yön Veren Yayınlar
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            Kitapların üzerinde imlecinizi gezdirerek sayfaları aralayın; tam
-            metni okumak için dilediğiniz yayına tıklayın.
+    <section id="blog" className="border-t border-border/50 py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 max-w-xl space-y-3">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            Yayınlar
           </p>
+          <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
+            Vergi rehberleri ve makaleler.
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {BLOG_POSTS.map((post) => (
             <article
               key={post.id}
-              className="group flex flex-col justify-between rounded-3xl border border-border bg-card p-6 shadow-sm transition-colors hover:border-primary/40"
+              className="group flex flex-col justify-between rounded-2xl border border-border/50 bg-card/40 p-6 transition-colors hover:border-border"
             >
               <div>
-                <div className="mb-5 rounded-2xl border border-border/70 bg-secondary/40 py-4">
+                <div className="mb-6 py-2">
                   <InteractiveBook
                     title={post.title}
                     category={post.category}
@@ -99,22 +93,14 @@ export function BlogSection() {
                   />
                 </div>
 
-                <div className="mb-2.5 flex items-center gap-3 text-xs text-muted-foreground">
-                  <span className="inline-flex items-center gap-1">
-                    <Calendar className="h-3.5 w-3.5 text-primary" />
-                    {post.date}
-                  </span>
-                  <span>·</span>
-                  <span className="inline-flex items-center gap-1">
-                    <Clock className="h-3.5 w-3.5 text-primary" />
-                    {post.readTime}
-                  </span>
-                </div>
+                <p className="text-xs text-muted-foreground">
+                  {post.date} · {post.readTime}
+                </p>
 
-                <h3 className="font-serif text-xl font-semibold leading-snug tracking-tight text-foreground">
+                <h3 className="mt-2 text-lg font-medium leading-snug tracking-[-0.015em] text-foreground">
                   {post.title}
                 </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {post.excerpt}
                 </p>
               </div>
@@ -122,10 +108,9 @@ export function BlogSection() {
               <button
                 type="button"
                 onClick={() => setSelectedPost(post)}
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-transform group-hover:translate-x-0.5 cursor-pointer"
+                className="mt-6 inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-primary"
               >
-                <BookOpen className="h-4 w-4" />
-                <span>Makaleyi Oku</span>
+                <span>Okumaya devam et</span>
                 <ArrowUpRight className="h-4 w-4" />
               </button>
             </article>
@@ -142,38 +127,34 @@ export function BlogSection() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="blog-modal-title"
-            className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-border bg-card p-6 shadow-2xl sm:p-8"
+            className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-border/60 bg-card p-6 sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setSelectedPost(null)}
               aria-label="Kapat"
-              className="absolute top-5 right-5 inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground hover:border-primary cursor-pointer"
+              className="absolute top-5 right-5 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-border/60 bg-background text-foreground transition-colors hover:border-foreground/40"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <span className="inline-block rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-primary">
+            <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
               {selectedPost.category}
-            </span>
+            </p>
 
             <h3
               id="blog-modal-title"
-              className="mt-4 font-serif text-2xl font-semibold leading-tight sm:text-3xl"
+              className="mt-3 text-2xl font-medium leading-tight tracking-tight sm:text-3xl"
             >
               {selectedPost.title}
             </h3>
 
-            <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
-              <span>YMM Ferhat Yılmaz</span>
-              <span>·</span>
-              <span>{selectedPost.date}</span>
-              <span>·</span>
-              <span>{selectedPost.readTime}</span>
-            </div>
+            <p className="mt-2 text-xs text-muted-foreground">
+              YMM Ferhat Yılmaz · {selectedPost.date} · {selectedPost.readTime}
+            </p>
 
-            <div className="mt-6 overflow-hidden rounded-2xl border border-border">
+            <div className="mt-6 overflow-hidden rounded-xl border border-border/50">
               <img
                 src={selectedPost.coverImage}
                 alt={selectedPost.title}
@@ -181,7 +162,7 @@ export function BlogSection() {
               />
             </div>
 
-            <div className="mt-6 space-y-4 text-sm leading-relaxed text-foreground/90 sm:text-base">
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/90">
               {selectedPost.content.map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}

@@ -2,42 +2,37 @@ import { Accordion, type AccordionItem } from "@/components/ui/Accordion";
 
 const FAQ_ITEMS: AccordionItem[] = [
   {
-    title: "Tam Tasdik sözleşmesi ne zaman yapılmalıdır ve şirkete ne kazandırır?",
+    title: "Tam Tasdik sözleşmesi ne zaman yapılmalıdır?",
     description:
-      "Tam Tasdik sözleşmesinin hesap döneminin ilk ayı (genellikle Ocak) içinde düzenlenmesi, işletmeye sınırsız tutarda KDV iadesi alma hakkı ve Maliye nezdinde öncelikli mevzuat güvencesi sağlar. Sürekli denetim sayesinde yıl sonu kapanışında sürpriz vergi riskleri ortaya çıkmadan önlenir.",
+      "Hesap döneminin ilk ayı içinde düzenlenmesi, sınırsız KDV iadesi ve sürekli ön denetim güvencesi sağlar.",
   },
   {
-    title: "YMM tasdikli KDV iadesi süreci ortalama kaç günde sonuçlanır?",
+    title: "KDV iadesi süreci ortalama kaç günde sonuçlanır?",
     description:
-      "Dijital karşıt inceleme ve YMM Raporu hazırlık altyapımız sayesinde eksiksiz evraklı ihracat ve indirimli oran KDV iade dosyaları ortalama 14–21 iş günü içerisinde vergi dairesi nezdinde sonuçlandırılmaktadır.",
+      "Dijital karşıt inceleme altyapımız sayesinde eksiksiz dosyalar ortalama 14–21 iş günü içinde sonuçlandırılır.",
   },
   {
-    title: "Vergi incelemesi başladıktan sonra YMM desteği alabilir miyiz?",
+    title: "Vergi incelemesi başladıktan sonra destek alınabilir mi?",
     description:
-      "Evet. Vergi müfettişi tutanak aşamasından tarhiyat öncesi/sonrası uzlaşma ve vergi mahkemesi teknik mütalaa süreçlerine kadar tüm safhalarda şirketiniz adına teknik savunma ve mevzuat analizi yürütüyoruz.",
+      "Tutanak aşamasından uzlaşma ve teknik mütalaa süreçlerine kadar her adımda şirketinizi temsil ediyoruz.",
   },
   {
-    title: "Şirket birleşme ve devirlerinde (M&A) YMM raporu neden kritiktir?",
+    title: "Birleşme ve devirlerde YMM raporu neden gereklidir?",
     description:
-      "Devir, bölünme ve nevi değişikliği işlemlerinde özsermaye tespiti ile geçmiş dönem gizli vergi risklerinin ortaya çıkarılması (Tax Due Diligence) işlemin hukuken geçerliliği ve değerleme doğruluğu için zorunludur.",
-  },
-  {
-    title: "Bilgi güvenliği ve ticari sır gizliliği nasıl korunuyor?",
-    description:
-      "3568 sayılı Meslek Yasası gereği tüm ortaklarımız ve denetçilerimiz yasal sır saklama yükümlülüğü altındadır; ayrıca tüm finansal veri paylaşımları KVKK ve ISO 27001 uyumlu şifreli kanallar üzerinden yürütülür.",
+      "Özsermaye tespiti ve geçmiş dönem risk analizi, işlemin hukuki geçerliliği ve değerleme doğruluğu için zorunludur.",
   },
 ];
 
 export function FaqSection() {
   return (
-    <section className="border-b border-border bg-card/30 py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-10 max-w-2xl text-center space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+    <section className="border-t border-border/50 py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto mb-12 max-w-2xl space-y-3 text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
             Sıkça Sorulan Sorular
           </p>
-          <h2 className="font-serif text-2xl font-semibold tracking-tight sm:text-3xl">
-            Tasdik ve Denetim Süreçleri Hakkında Merak Edilenler
+          <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
+            Tasdik ve denetim süreçleri.
           </h2>
         </div>
 

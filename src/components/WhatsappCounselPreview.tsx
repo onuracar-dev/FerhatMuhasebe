@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Laptop, MessageCircle, Smartphone } from "lucide-react";
+import { ArrowUpRight, Laptop, Smartphone } from "lucide-react";
 import { MobileMockup, type ChatMessage as MobileChatMessage } from "@/components/ui/MobileMockup";
 import { MacbookMockup, type ChatMessage as DesktopChatMessage } from "@/components/ui/MacbookMockup";
 import { cn } from "@/lib/utils";
@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const MOBILE_MESSAGES: MobileChatMessage[] = [
   {
     id: 1,
-    sender: "Mükellef A.Ş. Finans Direktörü",
+    sender: "Mükellef A.Ş.",
     avatarInitial: "M",
     text: "Ferhat Bey merhaba, Q3 ihracat KDV iade dosyamızı GİB listesine yükledik.",
     isCurrentUser: false,
@@ -15,7 +15,7 @@ const MOBILE_MESSAGES: MobileChatMessage[] = [
   },
   {
     id: 2,
-    sender: "Mükellef A.Ş. Finans Direktörü",
+    sender: "Mükellef A.Ş.",
     avatarInitial: "M",
     text: "YMM tasdik raporunun vergi dairesi kontrolünden ne zaman geçmesini öngörüyorsunuz?",
     isCurrentUser: false,
@@ -41,9 +41,9 @@ const MOBILE_MESSAGES: MobileChatMessage[] = [
   },
   {
     id: 5,
-    sender: "Mükellef A.Ş. Finans Direktörü",
+    sender: "Mükellef A.Ş.",
     avatarInitial: "M",
-    text: "Harika hız, öğleden sonra imzalı PDF'i bekliyoruz.",
+    text: "Teşekkürler, öğleden sonra imzalı PDF'i bekliyoruz.",
     isCurrentUser: false,
     timestamp: "09:46",
   },
@@ -54,7 +54,7 @@ const DESKTOP_MESSAGES: DesktopChatMessage[] = [
     id: 1,
     sender: "Ferhat Yılmaz, YMM",
     avatarInitial: "FY",
-    text: "Merhaba Selin Hanım, yıllık Tam Tasdik ön mizan kontrolü tamamlandı. Enflasyon düzeltmesi farklarını tabloya işledik.",
+    text: "Merhaba Selin Hanım, yıllık Tam Tasdik ön mizan kontrolü tamamlandı. Enflasyon düzeltmesi farklarını işledik.",
     isCurrentUser: false,
     timestamp: "10:41",
   },
@@ -62,7 +62,7 @@ const DESKTOP_MESSAGES: DesktopChatMessage[] = [
     id: 2,
     sender: "CFO Ofisi",
     avatarInitial: "CF",
-    text: "Teşekkürler Ferhat Bey. Amortisman ayrımı için ek notları Yönetim Kurulu sunumuna ekliyorum.",
+    text: "Teşekkürler Ferhat Bey. Amortisman notlarını Yönetim Kurulu sunumuna ekliyorum.",
     isCurrentUser: true,
     timestamp: "10:42",
   },
@@ -70,7 +70,7 @@ const DESKTOP_MESSAGES: DesktopChatMessage[] = [
     id: 3,
     sender: "Ferhat Yılmaz, YMM",
     avatarInitial: "FY",
-    text: "Detaylı mevzuat değerlendirmesini sesli not olarak paylaştım:",
+    text: "Detaylı mevzuat özetini sesli not olarak ilettim:",
     isCurrentUser: false,
     timestamp: "10:42",
     isAudio: true,
@@ -80,7 +80,7 @@ const DESKTOP_MESSAGES: DesktopChatMessage[] = [
     id: 4,
     sender: "CFO Ofisi",
     avatarInitial: "CF",
-    text: "Dinledim, vergi yükü optimizasyonu beklediğimizden daha net olmuş. Onaylıyoruz.",
+    text: "Dinledim, vergi yükü optimizasyonu netleşmiş. Onaylıyoruz.",
     isCurrentUser: true,
     timestamp: "10:43",
     reaction: "✓ 2",
@@ -91,50 +91,44 @@ export function WhatsappCounselPreview() {
   const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
 
   return (
-    <div className="mt-10 rounded-3xl border border-border/70 bg-card/50 p-6 sm:p-10">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        <div className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            7/24 Dijital Danışma Hattı
+    <div className="mt-14 rounded-2xl border border-border/50 bg-card/30 p-6 sm:p-10">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-lg space-y-2">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            WhatsApp Danışma Hattı
           </p>
-          <h3 className="mt-2 font-serif text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-            Vergi Denetimi ve Anlık İade Takibi{" "}
-            <span className="italic text-primary">Doğrudan Cebinize Gelsin</span>
+          <h3 className="text-2xl font-medium tracking-[-0.02em] text-foreground">
+            Anlık dosya ve iade takibi.
           </h3>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            Tam Tasdik, KDV iade karşıt incelemeleri ve acil vergi müfettişi
-            görüşmelerinde dosya sorumlunuzla WhatsApp kurumsal hattı üzerinden
-            anlık evrak ve durum paylaşımı yapın.
-          </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="inline-flex rounded-xl border border-border/80 bg-background p-1">
+        <div className="flex flex-wrap items-center gap-4">
+          <div className="inline-flex rounded-full border border-border/60 bg-background p-0.5">
             <button
               type="button"
               onClick={() => setDevice("desktop")}
               className={cn(
-                "inline-flex items-center gap-2 rounded-lg px-3.5 py-2 text-xs font-semibold transition-colors cursor-pointer",
+                "inline-flex cursor-pointer items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors",
                 device === "desktop"
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-foreground text-background"
                   : "text-muted-foreground hover:text-foreground",
               )}
             >
               <Laptop className="h-3.5 w-3.5" />
-              Masaüstü Hattı
+              Masaüstü
             </button>
             <button
               type="button"
               onClick={() => setDevice("mobile")}
               className={cn(
-                "inline-flex items-center gap-2 rounded-lg px-3.5 py-2 text-xs font-semibold transition-colors cursor-pointer",
+                "inline-flex cursor-pointer items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors",
                 device === "mobile"
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-foreground text-background"
                   : "text-muted-foreground hover:text-foreground",
               )}
             >
               <Smartphone className="h-3.5 w-3.5" />
-              Mobil Hattı
+              Mobil
             </button>
           </div>
 
@@ -142,19 +136,19 @@ export function WhatsappCounselPreview() {
             href="https://wa.me/905324102400"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-emerald-600/30 bg-emerald-600/10 px-4 py-2.5 text-xs font-semibold text-emerald-700 transition-colors hover:bg-emerald-600 hover:text-white dark:border-emerald-400/30 dark:text-emerald-300 dark:hover:bg-emerald-500 dark:hover:text-neutral-950"
+            className="inline-flex items-center gap-1 text-xs font-medium text-foreground transition-colors hover:text-primary"
           >
-            <MessageCircle className="h-3.5 w-3.5" />
-            WhatsApp ile Yazın
+            WhatsApp ile yazın
+            <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>
       </div>
 
-      <div className="mt-8 flex min-h-[420px] items-center justify-center overflow-x-auto rounded-2xl border border-border/50 bg-background/60 px-4 py-8">
+      <div className="mt-10 flex min-h-[400px] items-center justify-center overflow-x-auto">
         {device === "desktop" ? (
           <MacbookMockup
             headerTitle="Ferhat Yılmaz, YMM"
-            headerSubtitle="çevrimiçi · kurumsal destek"
+            headerSubtitle="çevrimiçi"
             avatarUrl="/images/hero-cobalt.jpg"
             avatarFallback="FY"
             userAvatarUrl="/images/service-strategy.jpg"

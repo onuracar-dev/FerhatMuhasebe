@@ -89,7 +89,6 @@ function CircularProgress({
           r={radius}
           cx={size / 2}
           cy={size / 2}
-          style={{ filter: `drop-shadow(0 0 2px ${colors.from}40)` }}
         />
       </svg>
     </div>

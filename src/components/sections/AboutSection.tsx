@@ -2,117 +2,84 @@ import { Timeline, type TimelineMilestone } from "@/components/ui/Timeline";
 
 const CAREER_MILESTONES: TimelineMilestone[] = [
   {
-    date: "2002 · Başlangıç",
-    title: "Maliye Teftiş & Hesap Uzmanlığı",
+    date: "2002",
+    title: "Maliye Teftiş",
     description:
-      "İstanbul Üniversitesi İktisat Fakültesi mezuniyetinin ardından Hazine ve Maliye Bakanlığı bünyesinde büyük ölçekli holding ve banka denetimlerinde görev aldı.",
+      "Hazine ve Maliye Bakanlığı bünyesinde büyük ölçekli holding ve banka denetimleri.",
     position: "top",
   },
   {
-    date: "2008 · Ruhsat",
-    title: "Yeminli Mali Müşavirlik Yetkisi",
+    date: "2008",
+    title: "YMM Yetkisi",
     description:
-      "3568 sayılı Kanun kapsamında Yeminli Mali Müşavir unvanını alarak bağımsız tam tasdik ve vergi danışmanlığı ofisini kurdu.",
+      "3568 sayılı Kanun kapsamında bağımsız tam tasdik ve vergi danışmanlığı ofisinin kuruluşu.",
     position: "bottom",
   },
   {
-    date: "2014 · Genişleme",
-    title: "Uluslararası M&A ve Denetim Masası",
+    date: "2014",
+    title: "Uluslararası M&A",
     description:
-      "Avrupa ve Körfez sermayeli doğrudan yabancı yatırımlarda Tax Due Diligence ve transfer fiyatlandırması birimini faaliyete geçirdi.",
+      "Doğrudan yabancı yatırımlarda Tax Due Diligence ve transfer fiyatlandırması masası.",
     position: "top",
   },
   {
-    date: "2019 · Ölçek",
-    title: "100+ Kıdemli Denetçi & Uzman Kadro",
+    date: "2019",
+    title: "Üç Büyük Merkez",
     description:
-      "İstanbul Levent merkez ofisinin ardından Ankara ve İzmir temsilcilikleriyle Türkiye genelinde 320'yi aşkın kurumsal gruba hizmet vermeye başladı.",
+      "İstanbul Levent ardından Ankara ve İzmir ofisleriyle 320'yi aşkın kurumsal gruba erişim.",
     position: "bottom",
   },
   {
-    date: "2023 · Teknoloji",
-    title: "Dijital Karşıt İnceleme & Risk Motoru",
+    date: "2023",
+    title: "Dijital Risk Analizi",
     description:
-      "e-Defter ve e-Fatura verilerini gerçek zamanlı mevzuat senaryolarıyla tarayan tescilli vergi riski erken uyarı altyapısını devreye aldı.",
+      "e-Defter ve e-Fatura akışlarını tarayan erken uyarı denetim altyapısı.",
     position: "top",
   },
   {
-    date: "2026 · Liderlik",
-    title: "₺48 Milyar+ Tasdik Hacmiyle Sektör Zirvesi",
+    date: "2026",
+    title: "₺48 Milyar+ Tasdik",
     description:
-      "BIST 100 şirketleri, enerji devleri ve ihracat şampiyonlarının birincil YMM çözüm ortağı olarak Türkiye'nin en büyük yerli YMM yapılanması konumuna ulaştı.",
+      "BIST 100 ve sanayi liderlerinin birincil Yeminli Mali Müşavirlik ortağı.",
     position: "bottom",
   },
 ];
 
 export function AboutSection() {
   return (
-    <section id="hakkimizda" className="border-b border-border bg-background">
-      <div className="mx-auto max-w-7xl px-6 pt-20">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+    <section id="hakkimizda" className="border-t border-border/50 bg-background">
+      <div className="mx-auto max-w-6xl px-6 pt-24 sm:pt-28">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
           <div className="space-y-5 lg:col-span-7">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Hakkımızda &amp; Kurucu Profili
+            <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+              Hakkımızda
             </p>
-            <h2 className="font-serif text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-              “Büyük dalgaları yaratan şey fırtına değil, zamanında fark
-              edilmeyen küçük açıklar ve bilanço kırılganlıklarıdır.”
+            <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
+              Büyük dalgaları yaratan şey fırtına değil, zamanında fark
+              edilmeyen bilanço açıklarıdır.
             </h2>
-            <p className="text-base leading-relaxed text-muted-foreground">
-              Kurucumuz <strong className="text-foreground">YMM Ferhat Yılmaz</strong>,
-              kamu denetim geleneğinden gelen mevzuat titizliğini özel sektörün
-              hız ve strateji ihtiyacıyla birleştirir. Ofisimiz; yalnızca geçmiş
-              dönem beyannamelerini tasdik eden bir yapı değil, yönetim
-              kurullarının finansal kararlarına kalkan olan stratejik bir akıl
-              merkezidir.
+            <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
+              YMM Ferhat Yılmaz, kamu denetim geleneğinden gelen mevzuat
+              titizliğini yönetim kurullarının karar hızıyla birleştirir.
             </p>
           </div>
 
           <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+            <div className="overflow-hidden rounded-2xl border border-border/50">
               <img
                 src="/images/about-archive.jpg"
-                alt="Ferhat Yılmaz YMM Kurumsal Arşivi ve Kütüphanesi"
-                className="h-64 w-full object-cover"
+                alt="Ferhat Yılmaz YMM Kurumsal Arşivi"
+                className="h-72 w-full object-cover"
               />
-              <div className="grid grid-cols-3 divide-x divide-border border-t border-border p-4 text-center">
-                <div>
-                  <p className="font-serif text-xl font-semibold text-primary">
-                    110+
-                  </p>
-                  <p className="text-[11px] text-muted-foreground">
-                    Uzman &amp; Denetçi
-                  </p>
-                </div>
-                <div>
-                  <p className="font-serif text-xl font-semibold text-primary">
-                    3 İl
-                  </p>
-                  <p className="text-[11px] text-muted-foreground">
-                    İstanbul · Ankara · İzmir
-                  </p>
-                </div>
-                <div>
-                  <p className="font-serif text-xl font-semibold text-primary">
-                    %99.8
-                  </p>
-                  <p className="text-[11px] text-muted-foreground">
-                    Uzlaşma Başarısı
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
       <Timeline
-        badge="Kariyer Zaman Tüneli"
-        heading="24 Yıllık Kurumsal Yolculuk"
+        badge="Kariyer"
+        heading="24 Yıllık Yolculuk"
         rangeLabel="2002–2026"
-        summary="Hazine müfettişliği disiplininden Türkiye'nin en büyük yerli Yeminli Mali Müşavirlik yapısına uzanan kilometre taşlarımız."
-        introImage="/images/about-archive.jpg"
-        introImageAlt="Ferhat Yılmaz YMM Arşiv Kütüphanesi"
         milestones={CAREER_MILESTONES}
       />
     </section>

@@ -2,29 +2,29 @@ import { ClientCard } from "@/components/client-card";
 
 const REFERENCES = [
   {
-    name: "Marmara Enerji & Altyapı Grubu",
+    name: "Marmara Enerji Grubu",
     country: "İstanbul · 14 İştirak",
-    sector: "Enerji & Altyapı",
+    sector: "Enerji",
     service:
-      "Yıllık tam tasdik, yenilenebilir enerji yatırım teşvik belgesi kapanışları ve uluslararası proje finansmanı vergi danışmanlığı.",
+      "Yıllık tam tasdik, yatırım teşvik kapanışları ve uluslararası proje finansmanı danışmanlığı.",
     complianceRate: 100,
     yearsActive: 14,
   },
   {
-    name: "Ege Otomotiv İhracat A.Ş.",
+    name: "Ege Otomotiv A.Ş.",
     country: "İzmir · Avrupa İhracatı",
-    sector: "Otomotiv & İhracat",
+    sector: "Otomotiv",
     service:
-      "Aylık ortalama ₺180M tutarlı ihracat KDV iadesi tasdik süreçleri, transfer fiyatlandırması ve gümrük vergi denetimi.",
+      "İhracat KDV iadesi tasdik süreçleri, transfer fiyatlandırması ve gümrük vergi denetimi.",
     complianceRate: 100,
     yearsActive: 11,
   },
   {
-    name: "Kuzey Teknoloji & Fintech Holding",
+    name: "Kuzey Teknoloji Holding",
     country: "Ankara · 6 Şirket",
-    sector: "Teknopark & Yazılım",
+    sector: "Yazılım",
     service:
-      "Ar-Ge ve Teknopark vergi istisnaları tasdiki, Seri-C yatırım turu vergi incelemesi (Tax Due Diligence) ve M&A yapılandırması.",
+      "Ar-Ge ve Teknopark istisna tasdiki ile yatırım turu vergi incelemeleri.",
     complianceRate: 100,
     yearsActive: 8,
   },
@@ -32,21 +32,18 @@ const REFERENCES = [
 
 export function ReferencesSection() {
   return (
-    <section id="referanslar" className="border-b border-border py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Kurumsal Referanslar
-            </p>
-            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Sektör Liderlerinin Güvenini Taşıyoruz
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            Her müvekkil grubuna özel atanan kıdemli YMM denetim ekipleri ile
-            sıfır mevzuat sürprizi ve tam zamanında tasdik güvencesi.
+    <section
+      id="referanslar"
+      className="border-t border-border/50 py-24 sm:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 max-w-xl space-y-3">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            Referanslar
           </p>
+          <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
+            Sektör liderlerinin tercihi.
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">

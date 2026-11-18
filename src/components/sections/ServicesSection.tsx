@@ -3,37 +3,37 @@ import { AccordionOS, type AccordionItem } from "@/components/accordionos";
 const YMM_SERVICES: AccordionItem[] = [
   {
     id: "tam-tasdik",
-    title: "Tam Tasdik & Bağımsız Denetim",
+    title: "Tam Tasdik & Denetim",
     badge: "01",
     claim:
-      "Kurumlar vergisi beyannamelerinizin mevzuata tam uyumu, mali tabloların bağımsız denetimi ve yıllık tam tasdik raporlaması ile tam güvence.",
+      "Kurumlar vergisi beyannamelerinin mevzuata tam uyumu ve yıllık tam tasdik güvencesi.",
     image: "/images/service-audit.jpg",
     alt: "Tam tasdik ve bağımsız denetim illüstrasyonu",
   },
   {
     id: "vergi-iade",
-    title: "KDV İadesi & Vergi Planlaması",
+    title: "KDV İadesi & Planlama",
     badge: "02",
     claim:
-      "İhracat, indirimli oran ve yatırım teşvik belgeli işlemlerde hızlı KDV iade tasdik süreçleri ile nakit akışınızı güçlendiren vergi mühendisliği.",
+      "İhracat ve indirimli oran KDV iade süreçlerinde hızlı raporlama ile güçlü nakit akışı.",
     image: "/images/service-tax.jpg",
-    alt: "Vergi planlaması ve KDV iadesi terazi illüstrasyonu",
+    alt: "Vergi planlaması ve KDV iadesi illüstrasyonu",
   },
   {
     id: "vergi-uyusmazlik",
     title: "Vergi İnceleme & Uzlaşma",
     badge: "03",
     claim:
-      "Vergi müfettişi incelemelerinde teknik savunma, tarhiyat öncesi ve sonrası uzlaşma temsili ile olası cezai risklerin kökünden yönetimi.",
+      "Müfettiş incelemelerinde teknik savunma ve tarhiyat öncesi uzlaşma temsili.",
     image: "/images/service-strategy.jpg",
-    alt: "Vergi inceleme ve stratejik rehberlik deniz feneri illüstrasyonu",
+    alt: "Vergi inceleme ve stratejik rehberlik illüstrasyonu",
   },
   {
     id: "uluslararasi-danismanlik",
     title: "M&A & Uluslararası Mevzuat",
     badge: "04",
     claim:
-      "Şirket birleşme, bölünme ve devir (Due Diligence) denetimleri ile çifte vergilendirmeyi önleme anlaşmaları ve transfer fiyatlandırması raporları.",
+      "Birleşme, devir ve transfer fiyatlandırması süreçlerinde uçtan uca mali danışmanlık.",
     image: "/images/service-global.jpg",
     alt: "Uluslararası mevzuat ve pusula illüstrasyonu",
   },
@@ -41,28 +41,25 @@ const YMM_SERVICES: AccordionItem[] = [
 
 export function ServicesSection() {
   return (
-    <section id="hizmetler" className="border-b border-border py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              Hizmet Alanlarımız
-            </p>
-            <h2 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
-              Dört Temel Uzmanlıkta Kesintisiz Denetim
-            </h2>
-          </div>
-          <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            Her işletmenin sermaye yapısı ve sektör regülasyonuna özel tasarlanan
-            Yeminli Mali Müşavirlik çözümlerimizle tanışın.
+    <section
+      id="hizmetler"
+      className="border-t border-border/50 py-24 sm:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 max-w-xl space-y-3">
+          <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+            Hizmetler
           </p>
+          <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
+            Dört temel uzmanlıkta denetim.
+          </h2>
         </div>
 
         <AccordionOS
           items={YMM_SERVICES}
           staticImage="/images/hero-cobalt.jpg"
           containerWidth="100%"
-          containerHeight={540}
+          containerHeight={500}
           autoPlay
           autoPlayInterval={4800}
           pauseOnHover

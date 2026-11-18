@@ -399,9 +399,9 @@ export function AccordionOS({
           justify-content: space-between;
           align-items: stretch;
           background-color: var(--card);
-          border: 1px solid var(--border);
-          border-radius: 36px;
-          padding: 24px;
+          border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+          border-radius: 24px;
+          padding: 20px;
           overflow: hidden;
           width: 100%;
           box-sizing: border-box;
