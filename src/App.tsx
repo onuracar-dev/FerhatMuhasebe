@@ -33,7 +33,7 @@ function MainSiteShell() {
         </div>
       </header>
 
-      <main className="pt-16">
+      <main className="overflow-x-clip pt-16">
         <HeroSection />
         <TrustSealBand />
         <AboutSection />

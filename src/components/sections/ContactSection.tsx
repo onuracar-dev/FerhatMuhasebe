@@ -84,7 +84,7 @@ export function ContactSection() {
               linkText="LinkedIn"
               labelClassName="text-sm text-muted-foreground"
               linkClassName="text-sm font-medium text-foreground hover:text-primary"
-              popoverClassName="border-border/70 bg-card/95"
+              popoverClassName="border-border/70 bg-card/95 md:right-0 md:left-auto"
             />
 
             <InstagramCard
@@ -99,7 +99,7 @@ export function ContactSection() {
               linkText="Instagram"
               labelClassName="text-sm text-muted-foreground"
               linkClassName="text-sm font-medium text-foreground hover:text-primary"
-              popoverClassName="border-border/70 bg-card/95"
+              popoverClassName="border-border/70 bg-card/95 md:right-0 md:left-auto"
             />
 
             <FacebookCard
@@ -114,7 +114,7 @@ export function ContactSection() {
               linkText="Facebook"
               labelClassName="text-sm text-muted-foreground"
               linkClassName="text-sm font-medium text-foreground hover:text-primary"
-              popoverClassName="border-border/70 bg-card/95"
+              popoverClassName="border-border/70 bg-card/95 md:right-0 md:left-auto"
             />
           </div>
         </div>

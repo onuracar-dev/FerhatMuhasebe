@@ -673,7 +673,7 @@ export function MacbookMockup({
         </div>
       </motion.div>
 
-      <div className="relative z-20 flex h-3.5 w-[520px] items-start justify-center rounded-b-xl bg-neutral-300 sm:h-4 sm:w-[670px] md:w-[770px] dark:bg-neutral-800">
+      <div className="relative z-20 flex h-3.5 w-[min(100%,520px)] items-start justify-center rounded-b-xl bg-neutral-300 sm:h-4 sm:w-[min(100%,670px)] md:w-[min(100%,770px)] dark:bg-neutral-800">
         <div className="h-1.5 w-14 rounded-b-md bg-neutral-400/90 sm:w-20 dark:bg-neutral-700/90" />
       </div>
     </div>
