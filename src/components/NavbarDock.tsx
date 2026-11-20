@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   BookOpen,
   Briefcase,
@@ -12,23 +12,46 @@ import {
   type FloatingButtonGroupItem,
 } from "@/components/arc/floating-button-group/floating-button-group";
 
-const SECTION_LINKS = [
-  { id: "hakkimizda", label: "Hakkımızda", icon: <Building2 /> },
-  { id: "hizmetler", label: "Hizmetler", icon: <Briefcase /> },
-  { id: "referanslar", label: "Referanslar", icon: <Users /> },
-  { id: "blog", label: "Blog", icon: <BookOpen /> },
-  { id: "iletisim", label: "İletişim", icon: <PhoneCall /> },
-  { id: "harita", label: "Konum", icon: <MapPin /> },
-] as const;
+interface NavTarget {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  route: string;
+  hash?: string;
+}
+
+const SECTION_LINKS: NavTarget[] = [
+  { id: "hakkimizda", label: "Hakkımızda", icon: <Building2 />, route: "/", hash: "hakkimizda" },
+  { id: "hizmetler", label: "Hizmetler", icon: <Briefcase />, route: "/", hash: "hizmetler" },
+  { id: "referanslar", label: "Referanslar", icon: <Users />, route: "/referanslar" },
+  { id: "blog", label: "Blog", icon: <BookOpen />, route: "/blog" },
+  { id: "iletisim", label: "İletişim", icon: <PhoneCall />, route: "/", hash: "iletisim" },
+  { id: "harita", label: "Konum", icon: <MapPin />, route: "/", hash: "harita" },
+];
 
 export function NavbarDock() {
-  const [activeId, setActiveId] = useState<string>("hakkimizda");
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleNavigate = (id: string) => {
-    setActiveId(id);
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+  const handleNavigate = (item: NavTarget) => {
+    if (item.route !== "/") {
+      navigate(item.route);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      if (item.hash) {
+        window.setTimeout(() => {
+          document.getElementById(item.hash!)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+      }
+      return;
+    }
+
+    if (item.hash) {
+      document.getElementById(item.hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -36,8 +59,8 @@ export function NavbarDock() {
     id: sec.id,
     label: sec.label,
     icon: sec.icon,
-    pressed: activeId === sec.id,
-    onSelect: () => handleNavigate(sec.id),
+    pressed: sec.route !== "/" && location.pathname === sec.route,
+    onSelect: () => handleNavigate(sec),
   }));
 
   return (
@@ -46,7 +69,7 @@ export function NavbarDock() {
         items={items}
         label="Bölüm Gezinme Çubuğu"
         variant="muted"
-        size="sm"
+        size="md"
       />
     </div>
   );
