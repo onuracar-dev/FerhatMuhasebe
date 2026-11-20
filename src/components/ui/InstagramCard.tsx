@@ -23,6 +23,7 @@ export interface InstagramCardProps {
   popoverClassName?: string;
   linkClassName?: string;
   labelClassName?: string;
+  alwaysOpen?: boolean;
 }
 
 const InstagramIcon = ({ className }: { className?: string }) => (
@@ -50,6 +51,7 @@ export const InstagramCard = ({
   popoverClassName,
   linkClassName,
   labelClassName,
+  alwaysOpen = false,
 }: InstagramCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const profileUrl = href || `https://instagram.com/${username}`;
@@ -122,42 +124,46 @@ export const InstagramCard = ({
 
   return (
     <div className={cn("flex items-center gap-1.5", className)}>
-      <span
-        className={cn(
-          "text-lg font-medium text-neutral-900/60 transition-colors dark:text-neutral-100/60",
-          labelClassName,
-        )}
-      >
-        {text}
-      </span>
+      {!alwaysOpen && (
+        <span
+          className={cn(
+            "text-lg font-medium text-neutral-900/60 transition-colors dark:text-neutral-100/60",
+            labelClassName,
+          )}
+        >
+          {text}
+        </span>
+      )}
       <div
-        className="relative flex w-max flex-col items-center [perspective:1000px]"
+        className="relative flex w-max max-w-full flex-col items-center [perspective:1000px]"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
       >
-        <div
-          ref={linkRef}
-          onMouseEnter={() => {
-            setHoverType("link");
-            if (!enableLinkTilt) {
-              x.set(0);
-              y.set(0);
-            }
-          }}
-          onMouseMove={handleLinkMouseMove}
-          className="cursor-pointer"
-        >
-          <a href={profileUrl} target="_blank" rel="noopener noreferrer">
-            <span
-              className={cn(
-                "text-lg font-medium text-neutral-900/60 underline underline-offset-4 transition-all duration-300 hover:text-neutral-900 dark:text-neutral-100/60 dark:hover:text-neutral-100",
-                linkClassName,
-              )}
-            >
-              {linkText}
-            </span>
-          </a>
-        </div>
+        {!alwaysOpen && (
+          <div
+            ref={linkRef}
+            onMouseEnter={() => {
+              setHoverType("link");
+              if (!enableLinkTilt) {
+                x.set(0);
+                y.set(0);
+              }
+            }}
+            onMouseMove={handleLinkMouseMove}
+            className="cursor-pointer"
+          >
+            <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+              <span
+                className={cn(
+                  "text-lg font-medium text-neutral-900/60 underline underline-offset-4 transition-all duration-300 hover:text-neutral-900 dark:text-neutral-100/60 dark:hover:text-neutral-100",
+                  linkClassName,
+                )}
+              >
+                {linkText}
+              </span>
+            </a>
+          </div>
+        )}
 
         <motion.div
           ref={cardRef}
@@ -169,9 +175,12 @@ export const InstagramCard = ({
             }
           }}
           onMouseMove={handleCardMouseMove}
-          initial="hidden"
+          onClick={() => {
+            if (alwaysOpen) window.open(profileUrl, "_blank", "noopener,noreferrer");
+          }}
+          initial={alwaysOpen ? "visible" : "hidden"}
           style={popoverStyle}
-          animate={isHovered ? "visible" : "hidden"}
+          animate={alwaysOpen || isHovered ? "visible" : "hidden"}
           variants={{
             hidden: {
               opacity: 0,
@@ -193,7 +202,9 @@ export const InstagramCard = ({
             },
           }}
           className={cn(
-            "absolute bottom-full z-50 mb-4 w-80 rounded-2xl border border-dashed border-neutral-300 bg-white/95 p-4 shadow-xl backdrop-blur-md transition-colors after:absolute after:top-full after:left-0 after:h-4 after:w-full dark:border-dashed dark:border-neutral-800 dark:bg-neutral-950/80",
+            alwaysOpen
+              ? "relative z-10 w-80 max-w-full cursor-pointer rounded-2xl border border-border bg-card p-4 shadow-sm transition-colors"
+              : "absolute bottom-full z-50 mb-4 w-80 rounded-2xl border border-dashed border-neutral-300 bg-white/95 p-4 shadow-xl backdrop-blur-md transition-colors after:absolute after:top-full after:left-0 after:h-4 after:w-full dark:border-dashed dark:border-neutral-800 dark:bg-neutral-950/80",
             popoverClassName,
           )}
         >

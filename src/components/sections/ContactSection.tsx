@@ -66,13 +66,19 @@ export function ContactSection() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col gap-5 border-t border-border/50 pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            Dijital Kanallar
-          </p>
+        <div className="mt-16 border-t border-border/50 pt-12">
+          <div className="mb-8 text-center space-y-2">
+            <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+              Sosyal Medya &amp; Güncel Mevzuat
+            </p>
+            <h3 className="text-2xl font-medium tracking-[-0.02em] text-foreground">
+              Dijital kanallarımızda bizi takip edin.
+            </h3>
+          </div>
 
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div className="mx-auto flex flex-wrap items-stretch justify-center gap-8">
             <LinkedinCard
+              alwaysOpen
               username="ferhatmuhasebe"
               name="Ferhat Muhasebe, YMM"
               headline="Kurumsal Tam Tasdik, KDV İadesi & Vergi Uyuşmazlıkları"
@@ -80,14 +86,11 @@ export function ContactSection() {
               connections="4.850+"
               avatarUrl="/images/hero-cobalt.jpg"
               bannerUrl="/images/about-archive.jpg"
-              text="Ağ:"
-              linkText="LinkedIn"
-              labelClassName="text-sm text-muted-foreground"
-              linkClassName="text-sm font-medium text-foreground hover:text-primary"
-              popoverClassName="border-border/70 bg-card/95 md:right-0 md:left-auto"
+              popoverClassName="border-border bg-card"
             />
 
             <InstagramCard
+              alwaysOpen
               username="ferhatmuhasebe.ymm"
               name="Ferhat Muhasebe"
               bio="Yeminli Mali Müşavirlik · Haftalık mevzuat özetleri ve ofis gündemi."
@@ -95,14 +98,11 @@ export function ContactSection() {
               followers="18.4B"
               following="124"
               avatarUrl="/images/service-strategy.jpg"
-              text="Yayın:"
-              linkText="Instagram"
-              labelClassName="text-sm text-muted-foreground"
-              linkClassName="text-sm font-medium text-foreground hover:text-primary"
-              popoverClassName="border-border/70 bg-card/95 md:right-0 md:left-auto"
+              popoverClassName="border-border bg-card"
             />
 
             <FacebookCard
+              alwaysOpen
               username="FerhatMuhasebeYMM"
               name="Ferhat Muhasebe YMM & Denetim"
               bio="Kurumsal mevzuat duyuruları ve vergi takvimi hatırlatmaları."
@@ -110,11 +110,7 @@ export function ContactSection() {
               mutualFriends="48"
               avatarUrl="/images/blog-ledger.jpg"
               bannerUrl="/images/service-audit.jpg"
-              text="Bülten:"
-              linkText="Facebook"
-              labelClassName="text-sm text-muted-foreground"
-              linkClassName="text-sm font-medium text-foreground hover:text-primary"
-              popoverClassName="border-border/70 bg-card/95 md:right-0 md:left-auto"
+              popoverClassName="border-border bg-card"
             />
           </div>
         </div>
