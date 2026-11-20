@@ -144,8 +144,8 @@ export function LocationSection() {
             </div>
           </div>
 
-          <div className="lg:col-span-7">
-            <div className="relative h-[420px] w-full overflow-hidden rounded-2xl border border-border/50 bg-card sm:h-[460px]">
+          <div className="min-w-0 lg:col-span-7">
+            <div className="relative h-[340px] w-full overflow-hidden rounded-2xl border border-border/50 bg-card sm:h-[460px]">
               <Map
                 center={OFFICES[0].coordinates}
                 zoom={14.5}

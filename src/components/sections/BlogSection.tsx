@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ArrowUpRight, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, ArrowUpRight, X } from "lucide-react";
 import { InteractiveBook } from "@/components/3d-book";
 
 interface BlogPost {
@@ -61,19 +62,31 @@ const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export function BlogSection() {
+export function BlogSection({ previewOnly = false }: { previewOnly?: boolean }) {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
 
   return (
     <section id="blog" className="border-t border-border/50 py-24 sm:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 max-w-xl space-y-3">
-          <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            Yayınlar
-          </p>
-          <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
-            Vergi rehberleri ve makaleler.
-          </h2>
+        <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div className="max-w-xl space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              Yayınlar
+            </p>
+            <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
+              Vergi rehberleri ve makaleler.
+            </h2>
+          </div>
+
+          {previewOnly && (
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              <span>Tüm Makaleleri İncele</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          )}
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">

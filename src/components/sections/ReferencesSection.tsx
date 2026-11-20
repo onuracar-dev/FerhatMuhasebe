@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { ClientCard } from "@/components/client-card";
 
 const REFERENCES = [
@@ -30,20 +32,32 @@ const REFERENCES = [
   },
 ] as const;
 
-export function ReferencesSection() {
+export function ReferencesSection({ previewOnly = false }: { previewOnly?: boolean }) {
   return (
     <section
       id="referanslar"
       className="border-t border-border/50 py-24 sm:py-28"
     >
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 max-w-xl space-y-3">
-          <p className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
-            Referanslar
-          </p>
-          <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
-            Sektör liderlerinin tercihi.
-          </h2>
+        <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div className="max-w-xl space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              Referanslar
+            </p>
+            <h2 className="text-3xl font-medium leading-[1.14] tracking-[-0.025em] text-foreground sm:text-4xl">
+              Sektör liderlerinin tercihi.
+            </h2>
+          </div>
+
+          {previewOnly && (
+            <Link
+              to="/referanslar"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              <span>Tüm Referansları İncele</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          )}
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
