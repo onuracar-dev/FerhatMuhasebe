@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -17,10 +17,10 @@ interface ClientCardProps {
 }
 
 const GRADIENTS = {
-  green: { from: "#22c55e", to: "#4ade80" },
-  blue: { from: "#3b82f6", to: "#0f3d9e" },
-  orange: { from: "#f59e0b", to: "#d8af5b" },
-  primary: { from: "#0f3d9e", to: "#3b82f6" },
+  green: { from: "#16a34a", to: "#22c55e" },
+  blue: { from: "#1d4ed8", to: "#0b2a5b" },
+  orange: { from: "#b45309", to: "#d97706" },
+  primary: { from: "#0b2a5b", to: "#2563eb" },
 } as const;
 
 type GradientVariant = keyof typeof GRADIENTS;
@@ -96,11 +96,11 @@ function CircularProgress({
 }
 
 export function ClientCard({
-  name = "Anadolu Sanayi Holding A.Ş.",
-  country = "İstanbul, Türkiye",
+  name = "Anadolu Sanayi Holding A.Å.",
+  country = "Ä°stanbul, TÃ¼rkiye",
   image,
-  service = "Tam Tasdik, Konsolide Vergi Denetimi ve Uluslararası Teşvik Danışmanlığı.",
-  sector = "BIST 100 · Sanayi",
+  service = "Tam Tasdik, Konsolide Vergi Denetimi ve UluslararasÄ± TeÅŸvik DanÄ±ÅŸmanlÄ±ÄŸÄ±.",
+  sector = "BIST 100 Â· Sanayi",
   complianceRate = 100,
   yearsActive = 12,
   className,
@@ -137,7 +137,7 @@ export function ClientCard({
                 <motion.img
                   layout
                   src={src}
-                  alt="Denetim ekibi uzmanı"
+                  alt="Denetim ekibi uzmanÄ±"
                   className="h-full w-full object-cover"
                 />
               </motion.div>
@@ -183,9 +183,9 @@ export function ClientCard({
                 className="flex cursor-pointer items-center gap-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 <ArrowLeft className="size-3.5" />
-                Geri Dön
+                Geri DÃ¶n
               </motion.button>
-              <span className="text-[11px] font-medium text-primary">
+              <span className="text-xs font-medium text-primary">
                 Atanan Denetim Ekibi
               </span>
             </motion.div>
@@ -202,7 +202,7 @@ export function ClientCard({
                   <motion.img
                     layout
                     src={src}
-                    alt="Denetim ekibi uzmanı"
+                    alt="Denetim ekibi uzmanÄ±"
                     className="h-full w-full object-cover"
                   />
                 </motion.div>
@@ -243,14 +243,14 @@ export function ClientCard({
                 <h3 className="truncate text-sm font-semibold tracking-tight text-foreground">
                   {name}
                 </h3>
-                <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <MapPin className="size-3 shrink-0" />
                   <span className="truncate">{country}</span>
                 </div>
               </div>
             </div>
           </div>
-          <span className="inline-block rounded-full border border-border bg-secondary/70 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+          <span className="inline-block rounded-full border border-border bg-secondary/70 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider text-primary">
             {sector}
           </span>
           <p className="line-clamp-4 text-sm leading-relaxed text-muted-foreground">
@@ -267,7 +267,7 @@ export function ClientCard({
               size={34}
             />
             <div className="flex flex-col gap-0.5">
-              <span className="text-[11px] leading-none text-muted-foreground">
+              <span className="text-xs leading-none text-muted-foreground">
                 Mevzuat Uyumu
               </span>
               <span className="text-sm font-semibold text-foreground">
@@ -284,11 +284,11 @@ export function ClientCard({
               size={34}
             />
             <div className="flex flex-col gap-0.5">
-              <span className="text-[11px] leading-none text-muted-foreground">
-                İşbirliği
+              <span className="text-xs leading-none text-muted-foreground">
+                Ä°ÅŸbirliÄŸi
               </span>
               <span className="text-sm font-semibold text-foreground">
-                {yearsActive} Yıl
+                {yearsActive} YÄ±l
               </span>
             </div>
           </div>

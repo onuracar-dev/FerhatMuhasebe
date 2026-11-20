@@ -3,25 +3,25 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #f3eadc;
-  --foreground: #0d1321;
-  --card: #faf4ea;
-  --card-foreground: #0d1321;
-  --popover: #faf4ea;
-  --popover-foreground: #0d1321;
-  --primary: #0f3d9e;
-  --primary-foreground: #f7f2e8;
-  --secondary: #e7dcc9;
-  --secondary-foreground: #0d1321;
-  --muted: #eadfce;
-  --muted-foreground: #4c5870;
-  --accent: #dbe3f3;
-  --accent-foreground: #0f3d9e;
+  --background: #f6f8fb;
+  --foreground: #0a1628;
+  --card: #ffffff;
+  --card-foreground: #0a1628;
+  --popover: #ffffff;
+  --popover-foreground: #0a1628;
+  --primary: #0b2a5b;
+  --primary-foreground: #ffffff;
+  --secondary: #e8edf5;
+  --secondary-foreground: #0a1628;
+  --muted: #edf1f7;
+  --muted-foreground: #2a3649;
+  --accent: #dde6f4;
+  --accent-foreground: #0b2a5b;
   --destructive: #b42318;
   --destructive-foreground: #ffffff;
-  --border: #d7c9b4;
-  --input: #d7c9b4;
-  --ring: #0f3d9e;
+  --border: #cdd6e4;
+  --input: #cdd6e4;
+  --ring: #0b2a5b;
   --radius: 0.75rem;
 
   --font-sans: 'Supreme', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -30,10 +30,10 @@
 
   /* Arc UI tokens mapped to Kobalt-Krem palette */
   --radius-control: 9999px;
-  --control-on: #0f3d9e;
-  --surface-raised: #faf4ea;
-  --text-secondary: #1e293b;
-  --text-muted: #64748b;
+  --control-on: #0b2a5b;
+  --surface-raised: #ffffff;
+  --text-secondary: #0a1628;
+  --text-muted: #2a3649;
   --font-body: var(--font-sans);
   --tracking-body: -0.01em;
   --text-sm: 0.875rem;
@@ -51,30 +51,30 @@
 }
 
 .dark {
-  --background: #08090c;
-  --foreground: #f4ead6;
-  --card: #111319;
-  --card-foreground: #f4ead6;
-  --popover: #111319;
-  --popover-foreground: #f4ead6;
-  --primary: #d8af5b;
-  --primary-foreground: #08090c;
-  --secondary: #181b24;
-  --secondary-foreground: #f4ead6;
-  --muted: #181b24;
-  --muted-foreground: #a49b89;
-  --accent: #221e16;
-  --accent-foreground: #e8c67a;
+  --background: #070d1a;
+  --foreground: #f4f7fc;
+  --card: #0e1729;
+  --card-foreground: #f4f7fc;
+  --popover: #0e1729;
+  --popover-foreground: #f4f7fc;
+  --primary: #9bbcf5;
+  --primary-foreground: #07101f;
+  --secondary: #141f36;
+  --secondary-foreground: #f4f7fc;
+  --muted: #141f36;
+  --muted-foreground: #d5dcea;
+  --accent: #172542;
+  --accent-foreground: #bcd2f8;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #252834;
-  --input: #252834;
-  --ring: #d8af5b;
+  --border: #243252;
+  --input: #243252;
+  --ring: #9bbcf5;
 
-  --control-on: #d8af5b;
-  --surface-raised: #141720;
-  --text-secondary: #e2d9c5;
-  --text-muted: #9a9180;
+  --control-on: #9bbcf5;
+  --surface-raised: #111c32;
+  --text-secondary: #f4f7fc;
+  --text-muted: #d5dcea;
   --shadow-raised: 0 12px 32px -10px rgba(0, 0, 0, 0.6);
   --shadow-floating: 0 14px 36px -10px rgba(0, 0, 0, 0.7);
 }
