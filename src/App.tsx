@@ -13,8 +13,6 @@ import { TrustSealBand } from "@/components/sections/TrustSealBand";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { FaqSection } from "@/components/sections/FaqSection";
-import { ReferencesSection } from "@/components/sections/ReferencesSection";
-import { BlogSection } from "@/components/sections/BlogSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { LocationSection } from "@/components/sections/LocationSection";
 import { ReferencesPage } from "@/pages/ReferencesPage";
@@ -29,8 +27,6 @@ function HomePage() {
       <AboutSection />
       <ServicesSection />
       <FaqSection />
-      <ReferencesSection previewOnly />
-      <BlogSection previewOnly />
       <ContactSection />
       <LocationSection />
     </>

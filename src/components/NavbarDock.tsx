@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   BookOpen,
@@ -29,9 +30,43 @@ const SECTION_LINKS: NavTarget[] = [
   { id: "harita", label: "Konum", icon: <MapPin />, route: "/", hash: "harita" },
 ];
 
+const HEADER_OFFSET = 76;
+
+function scrollToSectionId(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return false;
+  const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+  window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  return true;
+}
+
 export function NavbarDock() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [activeHash, setActiveHash] = useState<string>("hakkimizda");
+
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const sectionIds = ["hakkimizda", "hizmetler", "iletisim", "harita"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveHash(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 },
+    );
+
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   const handleNavigate = (item: NavTarget) => {
     if (item.route !== "/") {
@@ -40,28 +75,42 @@ export function NavbarDock() {
       return;
     }
 
+    if (item.hash) {
+      setActiveHash(item.hash);
+    }
+
     if (location.pathname !== "/") {
       navigate("/");
       if (item.hash) {
+        const targetHash = item.hash;
         window.setTimeout(() => {
-          document.getElementById(item.hash!)?.scrollIntoView({ behavior: "smooth", block: "start" });
+          if (!scrollToSectionId(targetHash)) {
+            window.setTimeout(() => scrollToSectionId(targetHash), 140);
+          }
         }, 80);
       }
       return;
     }
 
     if (item.hash) {
-      document.getElementById(item.hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToSectionId(item.hash);
     }
   };
 
-  const items: FloatingButtonGroupItem[] = SECTION_LINKS.map((sec) => ({
-    id: sec.id,
-    label: sec.label,
-    icon: sec.icon,
-    pressed: sec.route !== "/" && location.pathname === sec.route,
-    onSelect: () => handleNavigate(sec),
-  }));
+  const items: FloatingButtonGroupItem[] = SECTION_LINKS.map((sec) => {
+    const isPressed =
+      sec.route !== "/"
+        ? location.pathname === sec.route
+        : location.pathname === "/" && activeHash === sec.hash;
+
+    return {
+      id: sec.id,
+      label: sec.label,
+      icon: sec.icon,
+      pressed: isPressed,
+      onSelect: () => handleNavigate(sec),
+    };
+  });
 
   return (
     <div className="hidden lg:flex items-center">
