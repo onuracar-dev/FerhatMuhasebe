@@ -30,7 +30,7 @@ const SECTION_LINKS: NavTarget[] = [
   { id: "harita", label: "Konum", icon: <MapPin />, route: "/", hash: "harita" },
 ];
 
-const HEADER_OFFSET = 76;
+const HEADER_OFFSET = 28;
 
 function scrollToSectionId(id: string) {
   const el = document.getElementById(id);

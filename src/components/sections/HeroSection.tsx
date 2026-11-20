@@ -14,13 +14,16 @@ export function HeroSection() {
     theme === "dark" ? "/images/hero-gold.jpg" : "/images/hero-cobalt.jpg";
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 28;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
   };
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-[90vh] items-center overflow-hidden border-b border-border"
+      className="relative flex min-h-[calc(100svh-72px)] items-center overflow-hidden border-b border-border"
     >
       <img
         src={heroImage}
@@ -30,8 +33,8 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/30" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background to-transparent" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col justify-between px-6 py-20 sm:py-24">
-        <div className="max-w-2xl space-y-6">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col justify-between px-6 py-10 sm:py-12">
+        <div className="max-w-2xl space-y-5">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/90 px-4 py-1.5 text-xs font-semibold text-primary shadow-sm backdrop-blur-md">
             <ShieldCheck className="h-4 w-4 shrink-0" />
             <span>3568 Sayılı Kanun · Yetkili Yeminli Mali Müşavirlik</span>
@@ -75,7 +78,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 border-t border-border/80 pt-8 sm:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-4 pt-2 sm:mt-10 sm:grid-cols-3">
           {HERO_METRICS.map((metric) => (
             <div
               key={metric.label}
